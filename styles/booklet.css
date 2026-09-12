@@ -1,0 +1,1429 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400;1,600&family=Inter:wght@300;400;500;600;700&display=swap');
+
+:root {
+  --primary-red: #e03538;
+  --primary-red-hover: #c9292c;
+  --red-dark: #b82629;
+  --red-soft: #fbf0f0;
+  --text-main: #1f2124;
+  --text-muted: #6b7280;
+  --text-light: #9ca3af;
+  --bg-card: #f4f5f7;
+  --bg-card-subtle: #fafafa;
+  --border-light: #e5e7eb;
+  --font-heading: 'Montserrat', sans-serif;
+  --font-body: 'Inter', sans-serif;
+  --page-width: 148mm;
+  --page-height: 210mm;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html, body {
+  background-color: #d1d5db;
+  font-family: var(--font-body);
+  color: var(--text-main);
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ============================================================
+   TOP FLOATING CONTROLS (SCREEN ONLY)
+   ============================================================ */
+.controls-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 56px;
+  background: #111827;
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 24px;
+  z-index: 1000;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.25);
+}
+
+.controls-header .title-area {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.controls-header .badge {
+  background: var(--primary-red);
+  color: #fff;
+  font-size: 11px;
+  font-weight: 700;
+  padding: 3px 8px;
+  border-radius: 4px;
+  letter-spacing: 0.5px;
+}
+
+.controls-header h1 {
+  font-family: var(--font-heading);
+  font-size: 15px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+}
+
+.controls-header .btn-group {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.control-btn {
+  background: #272f3d;
+  color: #e5e7eb;
+  border: 1px solid #374151;
+  padding: 7px 14px;
+  font-size: 13px;
+  font-weight: 500;
+  border-radius: 6px;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  transition: all 0.15s ease;
+}
+
+.control-btn:hover {
+  background: #374151;
+  color: #ffffff;
+}
+
+.control-btn.primary {
+  background: var(--primary-red);
+  border-color: var(--primary-red);
+  color: #ffffff;
+  font-weight: 600;
+}
+
+.control-btn.primary:hover {
+  background: var(--primary-red-hover);
+}
+
+.page-jump-select {
+  background: #272f3d;
+  color: #ffffff;
+  border: 1px solid #374151;
+  padding: 6px 12px;
+  border-radius: 6px;
+  font-size: 13px;
+  outline: none;
+  cursor: pointer;
+}
+
+/* ============================================================
+   PAGE CONTAINER & STAGE
+   ============================================================ */
+.booklet-stage {
+  padding-top: 76px;
+  padding-bottom: 60px;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 30px;
+}
+
+/* Mode: 2-Page Spreads */
+.booklet-stage.spreads-mode .spread-wrapper {
+  display: flex;
+  flex-direction: row;
+  box-shadow: 0 12px 36px rgba(0, 0, 0, 0.2);
+  border-radius: 3px;
+  overflow: hidden;
+  background: #ffffff;
+}
+
+/* Mode: Single Page */
+.booklet-stage.single-mode .spread-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  box-shadow: none;
+  background: transparent;
+}
+
+.booklet-stage.single-mode .page {
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+}
+
+/* ============================================================
+   A5 PAGE SPECIFICATION
+   ============================================================ */
+.page {
+  width: var(--page-width);
+  height: var(--page-height);
+  background-color: #ffffff;
+  position: relative;
+  overflow: hidden;
+  padding: 16mm 15mm 20mm 15mm;
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Spreads fold effect */
+.spread-wrapper .page.left-page {
+  border-right: 1px solid rgba(0, 0, 0, 0.06);
+}
+
+.spread-wrapper .page.right-page {
+  border-left: 1px solid rgba(0, 0, 0, 0.04);
+}
+
+/* ============================================================
+   PAGE TYPOGRAPHY & COMMONS
+   ============================================================ */
+h1.page-title {
+  font-family: var(--font-heading);
+  font-size: 18pt;
+  font-weight: 700;
+  color: #111827;
+  letter-spacing: -0.3px;
+  margin-bottom: 10px;
+  line-height: 1.15;
+}
+
+h2.section-title {
+  font-family: var(--font-heading);
+  font-size: 11pt;
+  font-weight: 700;
+  color: #111827;
+  margin-bottom: 6px;
+}
+
+p.body-text {
+  font-size: 7pt;
+  line-height: 1.48;
+  color: var(--text-muted);
+  margin-bottom: 8px;
+  text-align: justify;
+}
+
+p.body-text-sm {
+  font-size: 6.3pt;
+  line-height: 1.42;
+  color: var(--text-muted);
+}
+
+.red-line {
+  height: 2px;
+  background-color: var(--primary-red);
+  width: 100%;
+  margin: 7px 0;
+}
+
+.red-line-short {
+  height: 2.5px;
+  background-color: var(--primary-red);
+  width: 45px;
+  margin: 6px 0;
+}
+
+/* Page Numbers */
+.page-number {
+  position: absolute;
+  bottom: 8mm;
+  font-family: var(--font-heading);
+  font-size: 8pt;
+  font-weight: 700;
+  color: #9ca3af;
+  z-index: 20;
+}
+
+.left-page .page-number {
+  left: 15mm;
+}
+
+.right-page .page-number {
+  right: 15mm;
+}
+
+/* ============================================================
+   BOTTOM GEOMETRIC RED ACCENT (SPREAD WAVE FACET)
+   ============================================================ */
+.bottom-facet {
+  position: absolute;
+  bottom: 0;
+  pointer-events: none;
+  z-index: 10;
+}
+
+/* Left Page Facet: Slopes up towards the right spine */
+.left-page .bottom-facet {
+  right: 0;
+  width: 90mm;
+  height: 22mm;
+}
+
+/* Right Page Facet: Slopes down from the left spine */
+.right-page .bottom-facet {
+  left: 0;
+  width: 90mm;
+  height: 22mm;
+}
+
+/* ============================================================
+   PAGE 1 & 16: COVERS (1:1 PIXEL-PERFECT REPRODUCTION)
+   ============================================================ */
+.page-cover {
+  padding: 0 !important;
+  position: relative;
+  background: #ffffff;
+}
+
+.cover-top-bar {
+  position: absolute;
+  top: 30mm;
+  left: 19mm;
+  display: flex;
+  flex-direction: column;
+}
+
+.cover-top-bar.align-right {
+  left: auto;
+  right: 19mm;
+  align-items: flex-end;
+}
+
+.company-logo {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 4px;
+}
+
+.company-logo.align-right {
+  align-items: flex-end;
+}
+
+.logo-diamonds {
+  width: 32px;
+  height: 16px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  margin-bottom: 2px;
+}
+
+.logo-diamonds .sq {
+  width: 11px;
+  height: 11px;
+  background: var(--primary-red);
+  transform: rotate(45deg);
+  border-radius: 1px;
+}
+
+.logo-diamonds .sq1 {
+  margin-right: -3px;
+}
+
+.logo-diamonds .sq2 {
+  opacity: 0.95;
+}
+
+.logo-name {
+  font-family: var(--font-heading);
+  font-weight: 800;
+  font-size: 12pt;
+  letter-spacing: 1.2px;
+  color: #111827;
+  line-height: 1;
+}
+
+.logo-tagline {
+  font-family: var(--font-heading);
+  font-weight: 600;
+  font-size: 6pt;
+  letter-spacing: 2px;
+  color: #6b7280;
+}
+
+/* Main Center Area with Ruler Lines & Red Box */
+.cover-main-container {
+  position: absolute;
+  top: 76mm;
+  left: 19mm;
+  width: 110mm;
+}
+
+/* Distinct Vertical Ruler / Barcode Lines */
+.vertical-ruler-lines {
+  position: absolute;
+  top: -24mm;
+  bottom: -28mm;
+  left: 3mm;
+  right: 3mm;
+  display: flex;
+  justify-content: space-between;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.vertical-ruler-lines span {
+  display: block;
+  width: 1px;
+  height: 100%;
+  background: #d5d7dc;
+}
+
+/* Red Card */
+.cover-red-card {
+  position: relative;
+  z-index: 2;
+  width: 110mm;
+  background: var(--primary-red);
+  border-radius: 4px;
+  padding: 18px 20px 16px 20px;
+  color: #ffffff;
+  display: flex;
+  flex-direction: column;
+}
+
+.card-tag {
+  font-family: var(--font-heading);
+  font-size: 16pt;
+  font-weight: 700;
+  letter-spacing: 0.8px;
+  text-transform: uppercase;
+  color: #ffffff;
+  line-height: 1.1;
+}
+
+.card-heading {
+  font-family: var(--font-heading);
+  font-size: 28pt;
+  font-weight: 800;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: #ffffff;
+  line-height: 1.05;
+  margin-top: 2px;
+  margin-bottom: 10px;
+}
+
+.card-subheading {
+  font-family: var(--font-heading);
+  font-size: 17pt;
+  font-weight: 700;
+  color: #ffffff;
+  line-height: 1.1;
+  margin-bottom: 10px;
+}
+
+.card-slogan {
+  font-family: var(--font-heading);
+  font-size: 9pt;
+  font-weight: 700;
+  color: #ffffff;
+  letter-spacing: 0.3px;
+  line-height: 1.25;
+  margin-bottom: 6px;
+}
+
+.card-description {
+  font-size: 6.4pt;
+  line-height: 1.5;
+  color: rgba(255, 255, 255, 0.92);
+  margin-bottom: 8px;
+  text-align: left;
+  font-style: italic;
+}
+
+.contact-text a {
+  color: inherit;
+  text-decoration: none;
+}
+
+/* Inside Card Ticks */
+.card-inner-ticks {
+  width: 100%;
+  height: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 6px;
+  margin-bottom: 8px;
+}
+
+.card-inner-ticks span {
+  display: block;
+  width: 1px;
+  height: 10px;
+  background: rgba(255, 255, 255, 0.4);
+}
+
+.card-divider-line {
+  width: 100%;
+  height: 1px;
+  background: rgba(255, 255, 255, 0.45);
+  margin-bottom: 12px;
+}
+
+/* Contacts Row with White Boxes */
+.card-contacts-grid {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 6px;
+}
+
+.contact-col {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+}
+
+.white-icon-box {
+  width: 18px;
+  height: 18px;
+  background: #ffffff;
+  border-radius: 2px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.white-icon-box svg {
+  width: 10px;
+  height: 10px;
+  fill: var(--primary-red);
+}
+
+.contact-text {
+  display: flex;
+  flex-direction: column;
+  font-size: 5.4pt;
+  line-height: 1.35;
+  color: #ffffff;
+  font-weight: 500;
+}
+
+
+/* ============================================================
+   PAGE 2: TABLE OF CONTENT
+   ============================================================ */
+.toc-container {
+  display: flex;
+  gap: 16px;
+  margin-top: 6px;
+}
+
+.toc-list {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+}
+
+.toc-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.toc-num {
+  width: 22px;
+  height: 20px;
+  background: var(--primary-red);
+  color: #ffffff;
+  font-family: var(--font-heading);
+  font-size: 7.5pt;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 2px;
+  flex-shrink: 0;
+}
+
+.toc-title {
+  font-family: var(--font-heading);
+  font-size: 8pt;
+  font-weight: 600;
+  color: #2b2b2b;
+}
+
+.toc-divider-line {
+  width: 2px;
+  background: var(--primary-red);
+  align-self: stretch;
+  margin-right: 14mm;
+}
+
+/* ============================================================
+   PAGE 2-4: KURS REJASI (MODULE-LEVEL TOC, SINGLE COLUMN)
+   ============================================================ */
+.toc2-modules {
+  flex: 1;
+  margin-top: 6px;
+}
+
+.toc2-module {
+  margin-bottom: 22px;
+}
+
+.toc2-module:last-child {
+  margin-bottom: 0;
+}
+
+.toc2-head {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 8px;
+}
+
+.toc2-num {
+  width: 22px;
+  height: 20px;
+  background: var(--primary-red);
+  color: #ffffff;
+  font-family: var(--font-heading);
+  font-size: 7.5pt;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 2px;
+  flex-shrink: 0;
+}
+
+.toc2-title {
+  font-family: var(--font-heading);
+  font-size: 8pt;
+  font-weight: 700;
+  color: #2b2b2b;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.toc2-range {
+  font-family: var(--font-body);
+  font-size: 6.5pt;
+  color: var(--text-light);
+  margin-left: auto;
+  flex-shrink: 0;
+}
+
+.toc2-lessons {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  padding-left: 34px;
+}
+
+.toc2-lesson {
+  font-family: var(--font-body);
+  font-size: 7pt;
+  line-height: 1.5;
+  color: var(--text-muted);
+}
+
+.toc2-lesson .l-n {
+  color: #2b2b2b;
+  font-weight: 500;
+}
+
+.toc2-lesson .l-uz {
+  color: var(--text-light);
+}
+
+/* ============================================================
+   PAGE 3: INTRODUCTION
+   ============================================================ */
+.intro-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  align-items: center;
+  margin: 6px 0 9px 0;
+}
+
+.photo-with-overlay {
+  position: relative;
+  overflow: hidden;
+  border-radius: 2px;
+}
+
+.photo-with-overlay img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.photo-overlay-accent {
+  position: absolute;
+  bottom: 12px;
+  left: 20%;
+  right: 10%;
+  height: 18px;
+  background: rgba(224, 53, 56, 0.85);
+}
+
+.photo-placeholder {
+  aspect-ratio: 800 / 534;
+  border: 1px solid #d1d5db;
+  border-radius: 2px;
+}
+
+.notice-box {
+  background: var(--red-soft);
+  border-left: 3px solid var(--primary-red);
+  padding: 3mm 4.5mm;
+  margin-top: 7px;
+}
+
+.notice-title {
+  font-family: var(--font-heading);
+  font-size: 7.5pt;
+  font-weight: 700;
+  color: var(--primary-red);
+  letter-spacing: 0.4px;
+  margin-bottom: 3px;
+}
+
+.notice-box p {
+  margin-bottom: 3px;
+  text-align: justify;
+}
+
+.notice-box p:last-child {
+  margin-bottom: 0;
+}
+
+.notice-em {
+  font-weight: 600;
+  color: #4b5563;
+}
+
+.letter-sign {
+  margin-top: 5px;
+  text-align: right;
+  font-family: var(--font-body);
+  font-size: 7pt;
+  line-height: 1.5;
+  color: var(--text-muted);
+}
+
+.letter-sign span {
+  display: block;
+  font-style: italic;
+}
+
+.letter-sign strong {
+  font-family: var(--font-heading);
+  font-size: 8pt;
+  font-weight: 700;
+  color: #111827;
+  letter-spacing: 0.4px;
+}
+
+.quote-col {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.quote-mark {
+  font-family: var(--font-heading);
+  font-size: 26pt;
+  line-height: 0.8;
+  color: #d1d5db;
+  font-weight: 800;
+  margin-bottom: 4px;
+}
+
+.quote-text {
+  font-size: 7.5pt;
+  font-weight: 500;
+  line-height: 1.45;
+  color: #374151;
+  font-style: italic;
+  margin-bottom: 8px;
+}
+
+.badge-tag {
+  display: inline-block;
+  background: var(--primary-red);
+  color: #ffffff;
+  font-family: var(--font-heading);
+  font-size: 7.5pt;
+  font-weight: 700;
+  padding: 3px 10px;
+  border-radius: 2px;
+  margin-bottom: 8px;
+}
+
+/* ============================================================
+   PAGE 4: WELCOME MESSAGE
+   ============================================================ */
+.welcome-layout {
+  display: grid;
+  grid-template-columns: 1.1fr 1fr;
+  gap: 12px;
+  margin: 6px 0;
+  align-items: center;
+}
+
+.ceo-photo-box {
+  position: relative;
+  background: var(--bg-card);
+  padding: 6px;
+  border-radius: 2px;
+}
+
+.ceo-photo-box img {
+  width: 100%;
+  display: block;
+}
+
+.ceo-meta {
+  margin-top: 8px;
+  margin-bottom: 8px;
+}
+
+.ceo-name {
+  font-family: var(--font-heading);
+  font-size: 10pt;
+  font-weight: 800;
+  color: #111827;
+  letter-spacing: 0.5px;
+}
+
+.ceo-role {
+  font-size: 6.5pt;
+  font-weight: 700;
+  color: #4b5563;
+  margin-top: 2px;
+}
+
+/* ============================================================
+   PAGE 5: EXECUTIVE SUMMARY
+   ============================================================ */
+.exec-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  margin: 6px 0;
+}
+
+.project-checklist {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+  margin-top: 8px;
+}
+
+.project-checklist li {
+  font-size: 6.8pt;
+  font-weight: 600;
+  color: #374151;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  border-bottom: 1px solid #e5e7eb;
+  padding-bottom: 4px;
+}
+
+.project-checklist .sq-bullet {
+  width: 5px;
+  height: 5px;
+  background: var(--primary-red);
+  flex-shrink: 0;
+}
+
+.conclusions-cards {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  margin-top: 8px;
+}
+
+.concl-card {
+  background: var(--bg-card);
+  padding: 8px 8px;
+  border-radius: 3px;
+  display: flex;
+  gap: 8px;
+  align-items: flex-start;
+}
+
+.concl-icon-red {
+  width: 20px;
+  height: 20px;
+  background: var(--primary-red);
+  border-radius: 2px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.concl-icon-red svg {
+  width: 12px;
+  height: 12px;
+  fill: #ffffff;
+}
+
+.concl-icon-light {
+  width: 20px;
+  height: 20px;
+  background: #ffffff;
+  border: 1px solid #e5e7eb;
+  border-radius: 2px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.concl-icon-light svg {
+  width: 12px;
+  height: 12px;
+  fill: var(--primary-red);
+}
+
+/* ============================================================
+   PAGE 6: BACKGROUND INFORMATION
+   ============================================================ */
+.tag-subtitle {
+  font-family: var(--font-heading);
+  font-size: 5.5pt;
+  font-weight: 800;
+  color: var(--primary-red);
+  letter-spacing: 1px;
+}
+
+.history-grid {
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: 12px;
+  margin: 6px 0;
+}
+
+.metrics-row {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin: 8px 0;
+}
+
+.metric-box {
+  background: var(--bg-card);
+  padding: 8px 12px;
+  border-radius: 3px;
+  min-width: 28mm;
+}
+
+.metric-value {
+  font-family: var(--font-heading);
+  font-size: 15pt;
+  font-weight: 800;
+  color: #111827;
+  line-height: 1;
+}
+
+.metric-label {
+  font-size: 5.5pt;
+  font-weight: 600;
+  color: #6b7280;
+  margin-top: 3px;
+}
+
+.quote-highlight-box {
+  background: var(--bg-card);
+  border-left: 3px solid var(--primary-red);
+  padding: 8px 12px;
+  font-size: 7pt;
+  font-weight: 600;
+  color: #1f2937;
+  margin-top: 8px;
+}
+
+/* ============================================================
+   PAGE 7: PLAN & GOALS
+   ============================================================ */
+.plan-grid {
+  display: grid;
+  grid-template-columns: 0.9fr 1.1fr;
+  gap: 12px;
+  margin: 8px 0;
+}
+
+.feature-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.feature-item {
+  display: flex;
+  gap: 10px;
+  align-items: flex-start;
+}
+
+.feat-icon-sq {
+  width: 22px;
+  height: 22px;
+  background: var(--primary-red);
+  border-radius: 2px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.feat-icon-sq svg {
+  width: 12px;
+  height: 12px;
+  fill: #ffffff;
+}
+
+.feat-content h3 {
+  font-family: var(--font-heading);
+  font-size: 7.8pt;
+  font-weight: 700;
+  color: #111827;
+  margin-bottom: 2px;
+}
+
+/* ============================================================
+   PAGE 8: TEAM MEMBERS
+   ============================================================ */
+.lead-member-card {
+  display: grid;
+  grid-template-columns: 1fr 1.2fr;
+  gap: 12px;
+  background: #ffffff;
+  margin: 8px 0;
+  align-items: center;
+}
+
+.lead-member-photo img {
+  width: 100%;
+  border-radius: 2px;
+  display: block;
+}
+
+.lead-info h2 {
+  font-family: var(--font-heading);
+  font-size: 11pt;
+  font-weight: 800;
+  color: #111827;
+  letter-spacing: 0.5px;
+}
+
+.lead-info .job-title {
+  font-size: 6.5pt;
+  font-weight: 700;
+  color: #6b7280;
+  margin-top: 2px;
+  margin-bottom: 6px;
+}
+
+.lead-info .contact-line {
+  font-size: 6.2pt;
+  color: #4b5563;
+  margin-bottom: 3px;
+}
+
+.team-grid-3 {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.team-card {
+  display: flex;
+  flex-direction: column;
+}
+
+.team-card img {
+  width: 100%;
+  aspect-ratio: 1 / 1.1;
+  object-fit: cover;
+  border-radius: 2px;
+  margin-bottom: 6px;
+}
+
+.team-card .member-name {
+  font-family: var(--font-heading);
+  font-size: 7.5pt;
+  font-weight: 700;
+  color: #111827;
+}
+
+.team-card .member-role {
+  font-size: 5.8pt;
+  color: #6b7280;
+  margin-bottom: 4px;
+}
+
+.team-card .member-contact {
+  font-size: 5.5pt;
+  color: #9ca3af;
+  border-top: 1px solid #e5e7eb;
+  padding-top: 3px;
+}
+
+/* ============================================================
+   PAGE 9: CASE STUDY ONE
+   ============================================================ */
+.challenge-box {
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: 10px;
+  align-items: center;
+  margin: 6px 0;
+}
+
+.two-col-layout {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  margin-top: 8px;
+}
+
+.problem-box-with-bar {
+  background: var(--bg-card-subtle);
+  border-left: 8px solid var(--primary-red);
+  padding: 6px 8px;
+  margin-bottom: 8px;
+}
+
+.bullet-clean-list {
+  list-style: square;
+  padding-left: 14px;
+  font-size: 6.8pt;
+  color: var(--text-muted);
+  line-height: 1.6;
+}
+
+/* ============================================================
+   PAGE 10: BUSINESS PROJECT
+   ============================================================ */
+.hero-banner-photo {
+  position: relative;
+  width: 100%;
+  height: 36mm;
+  overflow: hidden;
+  border-radius: 2px;
+  margin-bottom: 8px;
+}
+
+.hero-banner-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.hero-banner-photo .red-accent-box {
+  position: absolute;
+  bottom: 8px;
+  left: 25%;
+  width: 45px;
+  height: 22px;
+  background: rgba(224, 53, 56, 0.8);
+}
+
+.three-cards-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 8px;
+  margin-top: 8px;
+}
+
+.sub-feature-card {
+  display: flex;
+  flex-direction: column;
+}
+
+.sub-feature-card .icon-box {
+  width: 20px;
+  height: 20px;
+  background: var(--primary-red);
+  border-radius: 2px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 6px;
+}
+
+.sub-feature-card .icon-box svg {
+  width: 11px;
+  height: 11px;
+  fill: #ffffff;
+}
+
+.sub-feature-card h4 {
+  font-family: var(--font-heading);
+  font-size: 7.2pt;
+  font-weight: 700;
+  color: #111827;
+  margin-bottom: 3px;
+}
+
+/* ============================================================
+   PAGE 11: PROBLEM STATEMENT
+   ============================================================ */
+.problem-top-row {
+  display: grid;
+  grid-template-columns: 1fr 1.1fr;
+  gap: 12px;
+  margin: 6px 0;
+}
+
+.red-quote-card {
+  background: var(--primary-red);
+  color: #ffffff;
+  padding: 14px 12px;
+  border-radius: 4px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.red-quote-card .quote-title {
+  font-family: var(--font-heading);
+  font-size: 8.5pt;
+  font-weight: 700;
+  line-height: 1.35;
+  margin-bottom: 8px;
+}
+
+.red-quote-card .quote-sub {
+  font-size: 5.8pt;
+  opacity: 0.85;
+}
+
+.project-details-grid {
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: 12px;
+  align-items: center;
+  margin-top: 10px;
+}
+
+/* ============================================================
+   PAGE 12: SOLUTIONS STATEMENT
+   ============================================================ */
+.solution-header-card {
+  background: var(--bg-card);
+  padding: 10px;
+  border-radius: 4px;
+  display: grid;
+  grid-template-columns: 0.8fr 1.2fr;
+  gap: 12px;
+  align-items: center;
+  margin-bottom: 12px;
+}
+
+.solution-header-card img {
+  width: 100%;
+  border-radius: 2px;
+}
+
+.solution-header-card .metric-huge {
+  font-family: var(--font-heading);
+  font-size: 18pt;
+  font-weight: 800;
+  color: #111827;
+  margin-top: 4px;
+}
+
+.numbered-step-row {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.step-item {
+  display: flex;
+  flex-direction: column;
+}
+
+.step-item .step-header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 2px;
+}
+
+.step-item .step-num {
+  color: var(--primary-red);
+  font-family: var(--font-heading);
+  font-size: 9.5pt;
+  font-weight: 800;
+}
+
+.step-item .step-title {
+  font-family: var(--font-heading);
+  font-size: 7.8pt;
+  font-weight: 700;
+  color: #111827;
+}
+
+/* ============================================================
+   PAGE 13: CASE STUDY TWO
+   ============================================================ */
+.quote-box-gray {
+  background: var(--bg-card);
+  padding: 8px 12px;
+  border-radius: 3px;
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  margin: 6px 0;
+}
+
+.cs2-bottom-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  align-items: center;
+  margin-top: 10px;
+}
+
+/* ============================================================
+   PAGE 14: FEEDBACK
+   ============================================================ */
+.feedback-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.feedback-card {
+  background: var(--bg-card);
+  border-radius: 3px;
+  padding: 8px 10px;
+  display: grid;
+  grid-template-columns: 28mm 1fr;
+  gap: 10px;
+  align-items: center;
+}
+
+.feedback-card img {
+  width: 100%;
+  aspect-ratio: 1.1 / 1;
+  object-fit: cover;
+  border-radius: 2px;
+}
+
+.feedback-stars {
+  color: var(--primary-red);
+  font-size: 8.5pt;
+  letter-spacing: 1px;
+  margin-bottom: 2px;
+}
+
+.feedback-author {
+  font-family: var(--font-heading);
+  font-size: 7.5pt;
+  font-weight: 700;
+  color: #111827;
+  margin-bottom: 2px;
+}
+
+/* ============================================================
+   PAGE 15: PROCESSING METHOD
+   ============================================================ */
+.process-steps-area {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-top: 8px;
+}
+
+.process-step-item {
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+}
+
+.process-num-badge {
+  width: 22px;
+  height: 22px;
+  background: var(--primary-red);
+  color: #ffffff;
+  font-family: var(--font-heading);
+  font-size: 8pt;
+  font-weight: 800;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 2px;
+  flex-shrink: 0;
+}
+
+.step3-combined {
+  display: grid;
+  grid-template-columns: 0.9fr 1.1fr;
+  gap: 12px;
+  align-items: center;
+}
+
+/* ============================================================
+   PRINT STYLES (CRITICAL FOR 1:1 A5 PDF OUTPUT)
+   ============================================================ */
+@media print {
+  html, body {
+    background: transparent !important;
+    padding: 0 !important;
+    margin: 0 !important;
+  }
+
+  .no-print {
+    display: none !important;
+  }
+
+  .booklet-stage {
+    padding: 0 !important;
+    margin: 0 !important;
+    display: block !important;
+  }
+
+  .spread-wrapper {
+    display: block !important;
+    box-shadow: none !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    background: transparent !important;
+  }
+
+  .page {
+    width: 148mm !important;
+    height: 210mm !important;
+    margin: 0 !important;
+    padding: 16mm 15mm 20mm 15mm !important;
+    page-break-after: always !important;
+    break-after: page !important;
+    box-shadow: none !important;
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+
+  .page-cover {
+    padding: 0 !important;
+  }
+
+  @page {
+    size: 148mm 210mm;
+    margin: 0;
+  }
+}

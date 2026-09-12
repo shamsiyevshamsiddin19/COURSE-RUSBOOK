@@ -1,0 +1,554 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Fayoza — Rus Tili Kurs Kitobi — A5 Format (6 Pages)</title>
+  <link rel="stylesheet" href="styles/booklet.css">
+</head>
+<body>
+
+  <!-- ============================================================
+       TOP CONTROL BAR (Screen only, hidden on print)
+       ============================================================ -->
+  <header class="controls-header no-print">
+    <div class="title-area">
+      <span class="badge">A5 BOOKLET</span>
+      <h1>Fayoza — Rus Tili Kurs Kitobi — 6 Sahifa</h1>
+    </div>
+
+    <div class="btn-group">
+      <!-- Jump to page -->
+      <select id="jumpPageSelect" class="page-jump-select">
+        <option value="page-1">01. Front Cover</option>
+        <option value="page-2">02. Reja (1-3-modul)</option>
+        <option value="page-3">03. Reja (4-6-modul)</option>
+        <option value="page-4">04. Reja (7-8-modul)</option>
+        <option value="page-5">05. Muallifdan</option>
+        <option value="page-6">06. Back Cover</option>
+      </select>
+
+      <!-- Toggle View Mode -->
+      <button id="toggleSpreadBtn" class="control-btn" title="Yoyilma yoki bittalik sahifa rejimi">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="16" rx="2"/><line x1="12" y1="4" x2="12" y2="20"/></svg>
+        <span id="spreadBtnText">Yoyilma (Spreads)</span>
+      </button>
+
+      <!-- Zoom buttons -->
+      <button id="zoomOutBtn" class="control-btn" title="Kichraytirish">-</button>
+      <span id="zoomLevelText" style="font-size: 12px; color: #cbd5e1; font-weight: 600;">100%</span>
+      <button id="zoomInBtn" class="control-btn" title="Kattalashtirish">+</button>
+
+      <!-- Print / Save PDF -->
+      <button id="printBtn" class="control-btn primary" title="A5 PDF qilib saqlash">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 6 2 18 2 18 9"></polyline><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"></path><rect x="6" y="14" width="12" height="8"></rect></svg>
+        <span>PDF Saqlash / Chop Etish</span>
+      </button>
+
+      <!-- Direct PDF Download Link -->
+      <a href="case_study_booklet_a5.pdf" download="case_study_booklet_a5.pdf" class="control-btn" style="text-decoration:none; background:#059669; border-color:#059669;">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+        <span>Tayyor PDF (.pdf)</span>
+      </a>
+    </div>
+  </header>
+
+  <!-- ============================================================
+       SVG DEFINITIONS FOR ICONS
+       ============================================================ -->
+  <svg style="display: none;">
+    <!-- Phone -->
+    <symbol id="icon-phone" viewBox="0 0 24 24">
+      <path d="M20.01 15.38c-1.23 0-2.42-.2-3.53-.56a.977.977 0 0 0-1.01.24l-2.2 2.2a15.053 15.053 0 0 1-6.59-6.59l2.2-2.21a.96.96 0 0 0 .25-1.01A11.36 11.36 0 0 1 8.57 3.9c0-.55-.45-1-1-1H4c-.55 0-1 .45-1 1 0 9.39 7.61 17 17 17 .55 0 1-.45 1-1v-3.52c0-.55-.45-1-.99-1z"/>
+    </symbol>
+    <!-- Envelope / Mail -->
+    <symbol id="icon-mail" viewBox="0 0 24 24">
+      <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/>
+    </symbol>
+    <!-- Pin / Location -->
+    <symbol id="icon-location" viewBox="0 0 24 24">
+      <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5a2.5 2.5 0 0 1 0-5 2.5 2.5 0 0 1 0 5z"/>
+    </symbol>
+    <!-- Globe / Web -->
+    <symbol id="icon-globe" viewBox="0 0 24 24">
+      <path d="M12 2a10 10 0 1 0 10 10A10 10 0 0 0 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54A7.95 7.95 0 0 1 13 19.9v-2.9a1 1 0 0 0-1-1h-2v-3a1 1 0 0 0-1-1H7v-2h2a1 1 0 0 0 1-1V7h2a2 2 0 0 0 2-2v-.41a7.994 7.994 0 0 1 5.9 8.81z"/>
+    </symbol>
+    <!-- Desktop / Monitor -->
+    <symbol id="icon-desktop" viewBox="0 0 24 24">
+      <path d="M21 2H3c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h7l-2 3v1h8v-1l-2-3h7c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm0 12H3V4h18v10z"/>
+    </symbol>
+    <!-- Bar Chart -->
+    <symbol id="icon-chart" viewBox="0 0 24 24">
+      <path d="M5 9.2h3V19H5zM10.6 5h2.8v14h-2.8zm5.6 8H19v6h-2.8z"/>
+    </symbol>
+    <!-- Pie Chart -->
+    <symbol id="icon-pie" viewBox="0 0 24 24">
+      <path d="M11 2v20c-5.07-.5-9-4.79-9-10s3.93-9.5 9-10zm2 0v8.99L21.99 11C21.47 5.92 17.58 2.52 13 2zm0 11.01V22c4.58-.52 8.47-3.92 8.99-9H13z"/>
+    </symbol>
+    <!-- Briefcase -->
+    <symbol id="icon-briefcase" viewBox="0 0 24 24">
+      <path d="M20 6h-4V4c0-1.11-.89-2-2-2h-4c-1.11 0-2 .89-2 2v2H4c-1.11 0-1.99.89-1.99 2L2 19c0 1.11.89 2 2 2h16c1.11 0 2-.89 2-2V8c0-1.11-.89-2-2-2zm-6 0h-4V4h4v2z"/>
+    </symbol>
+    <!-- Cart -->
+    <symbol id="icon-cart" viewBox="0 0 24 24">
+      <path d="M7 18c-1.1 0-1.99.9-1.99 2S5.9 22 7 22s2-.9 2-2-.9-2-2-2zM1 2v2h2l3.6 7.59-1.35 2.45c-.16.28-.25.61-.25.96 0 1.1.9 2 2 2h12v-2H7.42c-.14 0-.25-.11-.25-.25l.03-.12.9-1.63h7.45c.75 0 1.41-.41 1.75-1.03l3.58-6.49c.08-.14.12-.31.12-.48 0-.55-.45-1-1-1H5.21l-.94-2H1zm16 16c-1.1 0-1.99.9-1.99 2s.89 2 1.99 2 2-.9 2-2-.9-2-2-2z"/>
+    </symbol>
+    <!-- Database / Layers -->
+    <symbol id="icon-database" viewBox="0 0 24 24">
+      <path d="M12 2C6.48 2 2 3.79 2 6v12c0 2.21 4.48 4 10 4s10-1.79 10-4V6c0-2.21-4.48-4-10-4zm0 2c4.42 0 8 1.34 8 2s-3.58 2-8 2-8-1.34-8-2 3.58-2 8-2zm0 6c4.42 0 8 1.34 8 2s-3.58 2-8 2-8-1.34-8-2 3.58-2 8-2zm0 6c4.42 0 8 1.34 8 2s-3.58 2-8 2-8-1.34-8-2 3.58-2 8-2z"/>
+    </symbol>
+    <!-- Sailboat / Origami -->
+    <symbol id="icon-sail" viewBox="0 0 24 24">
+      <path d="M2.5 19h19l-2-3H4.5l-2 3zm11-16L5 14h8.5V3zm2 2v9h4.5L15.5 5z"/>
+    </symbol>
+  </svg>
+
+  <!-- ============================================================
+       MAIN BOOKLET STAGE
+       ============================================================ -->
+  <main class="booklet-stage spreads-mode" id="bookletStage">
+
+    <!-- ==========================================================
+         SPREAD 1: PAGE 1 (Front Cover)
+         ========================================================== -->
+    <div class="spread-wrapper" id="spread-1">
+      <!-- PAGE 1: FRONT COVER -->
+      <section class="page page-cover right-page" id="page-1">
+        <!-- Top Logo: Left-aligned with the card -->
+        <div class="cover-top-bar">
+          <div class="company-logo">
+            <div class="logo-diamonds">
+              <div class="sq sq1"></div>
+              <div class="sq sq2"></div>
+            </div>
+            <div class="logo-name">Fayoza</div>
+            <div class="logo-tagline">рус тили</div>
+          </div>
+        </div>
+
+        <!-- Center Area with Vertical Ruler Lines & Red Box -->
+        <div class="cover-main-container">
+          <!-- Distinct Vertical Ruler / Barcode Lines -->
+          <div class="vertical-ruler-lines">
+            <span></span><span></span><span></span><span></span><span></span>
+            <span></span><span></span><span></span><span></span><span></span>
+            <span></span><span></span><span></span><span></span><span></span>
+            <span></span><span></span><span></span><span></span><span></span>
+            <span></span><span></span><span></span><span></span><span></span>
+            <span></span><span></span>
+          </div>
+
+          <!-- Red Card -->
+          <div class="cover-red-card">
+            <div class="card-tag">FAYOZA</div>
+            <div class="card-heading">РУС ТИЛИ</div>
+            <div class="card-slogan">Я МОГУ ГОВОРИТЬ ПО-РУССКИ!</div>
+            <p class="card-description">
+              «Rus tilini o'rganishdagi eng katta maqsad — qoidalarni yodlash emas, ularni hayotda qo'llay olishdir.»
+            </p>
+
+            <!-- Inside Card Ticks -->
+            <div class="card-inner-ticks">
+              <span></span><span></span><span></span><span></span><span></span>
+              <span></span><span></span><span></span><span></span><span></span>
+              <span></span><span></span><span></span><span></span><span></span>
+              <span></span><span></span><span></span><span></span><span></span>
+              <span></span><span></span><span></span><span></span><span></span>
+            </div>
+
+            <div class="card-divider-line"></div>
+
+            <!-- Contacts Row with Solid White Boxes and Red Icons -->
+            <div class="card-contacts-grid">
+              <div class="contact-col">
+                <div class="white-icon-box"><svg><use href="#icon-phone"/></svg></div>
+                <div class="contact-text">
+                  <a href="tel:+998909009090">+998909009090</a>
+                  <a href="tel:+998909009090">+998909009090</a>
+                </div>
+              </div>
+              <div class="contact-col">
+                <div class="white-icon-box"><svg><use href="#icon-globe"/></svg></div>
+                <div class="contact-text">
+                  <a href="mailto:fayoza@gmail.com">fayoza@gmail.com</a>
+                  <a href="https://www.fayoza.uz">www.fayoza.uz</a>
+                </div>
+              </div>
+              <div class="contact-col">
+                <div class="white-icon-box"><svg><use href="#icon-location"/></svg></div>
+                <div class="contact-text">
+                  <a href="https://maps.app.goo.gl/fiPRjbPJeSzKMbQk6?g_st=atm">Chilonzor metro ro'parasidagi</a>
+                  <a href="https://maps.app.goo.gl/fiPRjbPJeSzKMbQk6?g_st=atm">Bright School o'quv markazi</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+
+
+    <!-- ==========================================================
+         SPREAD 2: PAGE 2 & PAGE 3
+         ========================================================== -->
+    <div class="spread-wrapper" id="spread-2">
+      <!-- PAGE 2: KURS REJASI -->
+      <section class="page left-page" id="page-2">
+        <div class="toc-container">
+          <div class="toc2-modules">
+          <div class="toc2-module">
+            <div class="toc2-head"><div class="toc2-num">01</div><div class="toc2-title">Boshlang&#x27;ich rus tili</div><div class="toc2-range">5–39</div></div>
+            <div class="toc2-lessons">
+            <div class="toc2-lesson"><span class="l-n">Урок 1.</span> Я и русский язык <span class="l-uz">(o&#x27;zingiz haqingizda)</span></div>
+            <div class="toc2-lesson"><span class="l-n">Урок 2.</span> Знакомство <span class="l-uz">(tanishish)</span></div>
+            <div class="toc2-lesson"><span class="l-n">Урок 3.</span> Моя семья <span class="l-uz">(oila haqida)</span></div>
+            <div class="toc2-lesson"><span class="l-n">Урок 4.</span> Мой дом <span class="l-uz">(uy va xonalar)</span></div>
+            <div class="toc2-lesson"><span class="l-n">Урок 5.</span> Мой день <span class="l-uz">(kun tartibi)</span></div>
+            <div class="toc2-lesson"><span class="l-n">Урок 6.</span> Числа и цифры <span class="l-uz">(sonlar)</span></div>
+            <div class="toc2-lesson"><span class="l-n">Урок 7.</span> Сколько это стоит? <span class="l-uz">(narx va pul)</span></div>
+            </div>
+          </div>
+          <div class="toc2-module">
+            <div class="toc2-head"><div class="toc2-num">02</div><div class="toc2-title">Rus tilining asoslari</div><div class="toc2-range">40–70</div></div>
+            <div class="toc2-lessons">
+            <div class="toc2-lesson"><span class="l-n">Урок 8.</span> Кто? Что? <span class="l-uz">(otlar)</span></div>
+            <div class="toc2-lesson"><span class="l-n">Урок 9.</span> Мужской, женский, средний род <span class="l-uz">(rodlar)</span></div>
+            <div class="toc2-lesson"><span class="l-n">Урок 10.</span> Множественное число <span class="l-uz">(ko&#x27;plik)</span></div>
+            <div class="toc2-lesson"><span class="l-n">Урок 11.</span> Мой, моя, моё, мои <span class="l-uz">(egalik olmoshlari)</span></div>
+            <div class="toc2-lesson"><span class="l-n">Урок 12.</span> Этот, эта, это, эти <span class="l-uz">(ko&#x27;rsatish olmoshlari)</span></div>
+            <div class="toc2-lesson"><span class="l-n">Урок 13.</span> Прилагательные <span class="l-uz">(sifatlar)</span></div>
+            <div class="toc2-lesson"><span class="l-n">Урок 14.</span> Повторение <span class="l-uz">(takrorlash)</span></div>
+            </div>
+          </div>
+          <div class="toc2-module">
+            <div class="toc2-head"><div class="toc2-num">03</div><div class="toc2-title">Fe&#x27;llar va zamonlar</div><div class="toc2-range">71–104</div></div>
+            <div class="toc2-lessons">
+            <div class="toc2-lesson"><span class="l-n">Урок 15.</span> Что ты делаешь? <span class="l-uz">(hozirgi zamon)</span></div>
+            <div class="toc2-lesson"><span class="l-n">Урок 16.</span> Что ты делал? <span class="l-uz">(o&#x27;tgan zamon)</span></div>
+            <div class="toc2-lesson"><span class="l-n">Урок 17.</span> Что ты будешь делать? <span class="l-uz">(kelasi zamon)</span></div>
+            <div class="toc2-lesson"><span class="l-n">Урок 18.</span> Мой обычный день <span class="l-uz">(amaliy mashqlar)</span></div>
+            <div class="toc2-lesson"><span class="l-n">Урок 19.</span> Могу, хочу, должен <span class="l-uz">(modal fe&#x27;llar)</span></div>
+            <div class="toc2-lesson"><span class="l-n">Урок 20.</span> Идти, ходить, ехать, ездить <span class="l-uz">(harakat fe&#x27;llari)</span></div>
+            <div class="toc2-lesson"><span class="l-n">Урок 21.</span> Повторение <span class="l-uz">(takrorlash)</span></div>
+            </div>
+          </div>
+          </div>
+          <div class="toc-divider-line"></div>
+        </div>
+
+        <div class="page-number">02</div>
+
+        <!-- Left Page Bottom Geometric Facet -->
+        <svg class="bottom-facet" viewBox="0 0 340 80" preserveAspectRatio="none">
+          <polygon points="0,80 180,80 340,25 0,80" fill="#eaebee"/>
+          <polygon points="120,80 340,80 340,0" fill="#e03538"/>
+          <polygon points="120,80 230,80 340,0" fill="#ca282c"/>
+        </svg>
+      </section>
+
+      <!-- PAGE 3: KURS REJASI -->
+      <section class="page right-page" id="page-3">
+        <div class="toc-container">
+          <div class="toc2-modules">
+          <div class="toc2-module">
+            <div class="toc2-head"><div class="toc2-num">04</div><div class="toc2-title">Kelishiklar — падежи</div><div class="toc2-range">105–142</div></div>
+            <div class="toc2-lessons">
+            <div class="toc2-lesson"><span class="l-n">Урок 22.</span> О чём ты думаешь? <span class="l-uz">(предложный падеж)</span></div>
+            <div class="toc2-lesson"><span class="l-n">Урок 23.</span> Я люблю... <span class="l-uz">(винительный падеж)</span></div>
+            <div class="toc2-lesson"><span class="l-n">Урок 24.</span> У меня есть / нет <span class="l-uz">(родительный падеж)</span></div>
+            <div class="toc2-lesson"><span class="l-n">Урок 25.</span> Мне нужно / нравится <span class="l-uz">(дательный падеж)</span></div>
+            <div class="toc2-lesson"><span class="l-n">Урок 26.</span> Кем? Чем? <span class="l-uz">(творительный падеж)</span></div>
+            <div class="toc2-lesson"><span class="l-n">Урок 27.</span> Все падежи <span class="l-uz">(oson yodlash usuli)</span></div>
+            <div class="toc2-lesson"><span class="l-n">Урок 28.</span> Повторение <span class="l-uz">(takrorlash)</span></div>
+            </div>
+          </div>
+          <div class="toc2-module">
+            <div class="toc2-head"><div class="toc2-num">05</div><div class="toc2-title">Kundalik suhbatlar</div><div class="toc2-range">143–168</div></div>
+            <div class="toc2-lessons">
+            <div class="toc2-lesson"><span class="l-n">Урок 29.</span> В магазине <span class="l-uz">(do&#x27;konda)</span></div>
+            <div class="toc2-lesson"><span class="l-n">Урок 30.</span> В кафе и ресторане <span class="l-uz">(kafe va restoranda)</span></div>
+            <div class="toc2-lesson"><span class="l-n">Урок 31.</span> На работе <span class="l-uz">(ish joyida)</span></div>
+            <div class="toc2-lesson"><span class="l-n">Урок 32.</span> В школе / университете <span class="l-uz">(o&#x27;qishda)</span></div>
+            <div class="toc2-lesson"><span class="l-n">Урок 33.</span> По телефону <span class="l-uz">(telefonda suhbat)</span></div>
+            <div class="toc2-lesson"><span class="l-n">Урок 34.</span> Повторение <span class="l-uz">(takrorlash)</span></div>
+            </div>
+          </div>
+          <div class="toc2-module">
+            <div class="toc2-head"><div class="toc2-num">06</div><div class="toc2-title">Rus tilida erkin gapiramiz</div><div class="toc2-range">169–174</div></div>
+            <div class="toc2-lessons">
+            <div class="toc2-lesson"><span class="l-n">Урок 35.</span> Как рассказать о себе? <span class="l-uz">(o&#x27;zingiz haqingizda)</span></div>
+            <div class="toc2-lesson"><span class="l-n">Урок 36.</span> Как рассказать о своей семье? <span class="l-uz">(oila)</span></div>
+            <div class="toc2-lesson"><span class="l-n">Урок 37.</span> Как рассказать о своём дне? <span class="l-uz">(kun haqida)</span></div>
+            <div class="toc2-lesson"><span class="l-n">Урок 38.</span> Как выразить своё мнение? <span class="l-uz">(fikr)</span></div>
+            <div class="toc2-lesson"><span class="l-n">Урок 39.</span> Как задавать вопросы? <span class="l-uz">(savollar)</span></div>
+            <div class="toc2-lesson"><span class="l-n">Урок 40.</span> Как поддержать разговор? <span class="l-uz">(suhbatni davom ettirish)</span></div>
+            </div>
+          </div>
+          </div>
+          <div class="toc-divider-line"></div>
+        </div>
+
+        <div class="page-number">03</div>
+
+        <!-- Right Page Bottom Geometric Facet -->
+        <svg class="bottom-facet" viewBox="0 0 340 80" preserveAspectRatio="none">
+          <polygon points="0,0 0,80 220,80" fill="#e03538"/>
+          <polygon points="0,0 110,80 220,80" fill="#ca282c"/>
+          <polygon points="0,25 160,80 340,80" fill="#eaebee"/>
+        </svg>
+      </section>
+    </div>
+
+
+    <!-- ==========================================================
+         SPREAD 3: PAGE 4 & PAGE 5
+         ========================================================== -->
+    <div class="spread-wrapper" id="spread-3">
+      <!-- PAGE 4: KURS REJASI -->
+      <section class="page left-page" id="page-4">
+        <div class="toc-container">
+          <div class="toc2-modules">
+          <div class="toc2-module">
+            <div class="toc2-head"><div class="toc2-num">07</div><div class="toc2-title">Eng kerakli ruscha</div><div class="toc2-range">175–178</div></div>
+            <div class="toc2-lessons">
+            <div class="toc2-lesson"><span class="l-n">Урок 41.</span> 100 eng kerakli fe&#x27;llar <span class="l-uz">(fe&#x27;llar)</span></div>
+            <div class="toc2-lesson"><span class="l-n">Урок 42.</span> 100 eng kerakli sifat <span class="l-uz">(sifatlar)</span></div>
+            <div class="toc2-lesson"><span class="l-n">Урок 43.</span> Kundalik hayotdagi iboralar <span class="l-uz">(iboralar)</span></div>
+            <div class="toc2-lesson"><span class="l-n">Урок 44.</span> O&#x27;zbeklar ko&#x27;p qiladigan xatolar <span class="l-uz">(xatolar)</span></div>
+            <div class="toc2-lesson"><span class="l-n">Урок 45.</span> To&#x27;g&#x27;ri talaffuz <span class="l-uz">(talaffuz)</span></div>
+            </div>
+          </div>
+          <div class="toc2-module">
+            <div class="toc2-head"><div class="toc2-num">08</div><div class="toc2-title">Mustahkamlash</div><div class="toc2-range">179–186</div></div>
+            <div class="toc2-lessons">
+            <div class="toc2-lesson"><span class="l-n">Урок 46.</span> Takrorlash</div>
+            <div class="toc2-lesson"><span class="l-n">Урок 47.</span> Grammatik mashqlar</div>
+            <div class="toc2-lesson"><span class="l-n">Урок 48.</span> So&#x27;z boyligini tekshirish</div>
+            <div class="toc2-lesson"><span class="l-n">Урок 49.</span> Dialoglar</div>
+            <div class="toc2-lesson"><span class="l-n">Урок 50.</span> Yakuniy test</div>
+            </div>
+          </div>
+          </div>
+          <div class="toc-divider-line"></div>
+        </div>
+
+        <div class="page-number">04</div>
+
+        <!-- Left Page Bottom Geometric Facet -->
+        <svg class="bottom-facet" viewBox="0 0 340 80" preserveAspectRatio="none">
+          <polygon points="0,80 180,80 340,25 0,80" fill="#eaebee"/>
+          <polygon points="120,80 340,80 340,0" fill="#e03538"/>
+          <polygon points="120,80 230,80 340,0" fill="#ca282c"/>
+        </svg>
+      </section>
+
+      <!-- PAGE 5: MUALLIFDAN -->
+      <section class="page right-page" id="page-5">
+        <h1 class="page-title">MUALLIFDAN</h1>
+
+        <p class="body-text">
+          Assalomu alaykum, aziz o‘quvchim! Avvalo, ushbu kitobni qo‘lingizga olganingiz bilan sizni chin qalbimdan tabriklayman. Chunki til o‘rganishga bo‘lgan har bir qadam — kelajagingiz uchun qo‘yilgan muhim qadamdir.
+        </p>
+
+        <div class="intro-grid">
+          <div class="photo-placeholder"></div>
+          <div class="quote-col">
+            <div class="quote-mark">“</div>
+            <div class="quote-text">
+              Eng muhimi — o‘zingizga ishoning!
+            </div>
+            <div class="red-line"></div>
+          </div>
+        </div>
+
+        <p class="body-text">
+          Men, ФАЁЗА АЛИШЕРОВНА, ushbu kitobni rus tilini o‘rganishni istagan, ammo qayerdan boshlashni bilmayotgan insonlar uchun yaratdim. Dars berish davomida shuni angladimki, ko‘pchilik rus tilini qiyin deb o‘ylaydi. Aslida esa muammo rus tilining qiyinligida emas, uni qanday o‘rganishda.
+        </p>
+        <p class="body-text">
+          Shuning uchun bu kitobda murakkab qoidalarni imkon qadar sodda va tushunarli tilda tushuntirishga, har bir mavzuni hayotiy misollar bilan yoritishga harakat qildim. Bu kitobni shunchaki o‘qib chiqish uchun emas, rus tilida gapirishni o‘rganish uchun yozdim.
+        </p>
+
+        <div class="badge-tag">Sizdan faqat bitta narsani so‘rayman</div>
+        <p class="body-text">
+          Shoshilmang, darslarni tashlab ketmang va mashqlarni albatta bajaring. Har kuni ozgina bo‘lsa ham harakat qilsangiz, bugun bilmagan narsangizni ertaga bilasiz. Bir kun kelib, rus tilida o‘zingizga ishonch bilan gapirayotganingizni sezmay ham qolasiz.
+        </p>
+        <p class="body-text">
+          “Men rus tilini o‘rgana olmayman” demang. Buning o‘rniga: “Men albatta o‘rganaman!” deng. Ushbu kitob sizning rus tilini o‘rganish yo‘lingizdagi kichik, ammo muhim hamrohingiz bo‘lishiga umid qilaman. Sizga o‘qishda sabr, kuch va katta natijalar tilayman!
+        </p>
+
+        <div class="notice-box">
+          <div class="notice-title">MUHIM ESLATMA</div>
+          <p class="body-text-sm">Aziz o‘quvchim, sizdan kichikgina iltimosim bor.</p>
+          <p class="body-text-sm">Ushbu kitob mening ko‘p yillik tajribam, mehnatim va bilimlarim asosida tayyorlangan mualliflik kitobimdir. Shuning uchun kitobni boshqa insonlarga tarqatmasligingizni, nusxa ko‘chirmasligingizni va internetga joylamasligingizni so‘rayman.</p>
+          <p class="body-text-sm notice-em">Iltimos, ushbu kitobdan faqat o‘zingiz foydalaning. Uni do‘stlaringiz yoki boshqa o‘quvchilarga yuborish o‘rniga, ularga kitobni o‘zlari uchun olishni tavsiya qiling.</p>
+          <p class="body-text-sm">Sizning kitobimga bo‘lgan hurmatingiz — mening mehnatimga bo‘lgan hurmatingizdir. Tushunganingiz va qo‘llab-quvvatlaganingiz uchun katta rahmat!</p>
+        </div>
+
+        <div class="letter-sign">
+          <span>Hurmat bilan,</span>
+          <strong>ФАЁЗА АЛИШЕРОВНА</strong>
+        </div>
+
+        <div class="page-number">05</div>
+
+        <!-- Right Page Bottom Geometric Facet -->
+        <svg class="bottom-facet" viewBox="0 0 340 80" preserveAspectRatio="none">
+          <polygon points="0,0 0,80 220,80" fill="#e03538"/>
+          <polygon points="0,0 110,80 220,80" fill="#ca282c"/>
+          <polygon points="0,25 160,80 340,80" fill="#eaebee"/>
+        </svg>
+      </section>
+    </div>
+
+
+    <!-- ==========================================================
+         PAGE 6: BACK COVER
+         ========================================================== -->
+    <div class="spread-wrapper" id="spread-4">
+      <section class="page page-cover left-page" id="page-6">
+        <!-- Top Logo: Right-aligned with the card -->
+        <div class="cover-top-bar align-right">
+          <div class="company-logo align-right">
+            <div class="logo-diamonds">
+              <div class="sq sq1"></div>
+              <div class="sq sq2"></div>
+            </div>
+            <div class="logo-name">Fayoza</div>
+            <div class="logo-tagline">рус тили</div>
+          </div>
+        </div>
+
+        <!-- Center Area with Vertical Ruler Lines & Red Box -->
+        <div class="cover-main-container">
+          <!-- Distinct Vertical Ruler / Barcode Lines -->
+          <div class="vertical-ruler-lines">
+            <span></span><span></span><span></span><span></span><span></span>
+            <span></span><span></span><span></span><span></span><span></span>
+            <span></span><span></span><span></span><span></span><span></span>
+            <span></span><span></span><span></span><span></span><span></span>
+            <span></span><span></span><span></span><span></span><span></span>
+            <span></span><span></span>
+          </div>
+
+          <!-- Red Card -->
+          <div class="cover-red-card">
+            <div class="card-heading" style="font-size: 26pt; margin-bottom: 2px;">СПАСИБО</div>
+            <div class="card-subheading" style="font-size: 16pt; font-weight: 700; margin-bottom: 8px;">За то, что вы с нами</div>
+            <p class="card-description">
+              Rus tilini o'rganish safaringizda omad tilaymiz!
+            </p>
+
+            <!-- Inside Card Ticks -->
+            <div class="card-inner-ticks">
+              <span></span><span></span><span></span><span></span><span></span>
+              <span></span><span></span><span></span><span></span><span></span>
+              <span></span><span></span><span></span><span></span><span></span>
+              <span></span><span></span><span></span><span></span><span></span>
+              <span></span><span></span><span></span><span></span><span></span>
+            </div>
+
+            <div class="card-divider-line"></div>
+
+            <!-- Contacts Row with Solid White Boxes and Red Icons (4 cols) -->
+            <div class="card-contacts-grid">
+              <div class="contact-col">
+                <div class="white-icon-box"><svg><use href="#icon-location"/></svg></div>
+                <div class="contact-text">
+                  <a href="https://maps.app.goo.gl/fiPRjbPJeSzKMbQk6?g_st=atm">Chilonzor metro</a>
+                  <a href="https://maps.app.goo.gl/fiPRjbPJeSzKMbQk6?g_st=atm">Bright School</a>
+                </div>
+              </div>
+              <div class="contact-col">
+                <div class="white-icon-box"><svg><use href="#icon-mail"/></svg></div>
+                <div class="contact-text">
+                  <a href="mailto:fayoza@gmail.com">fayoza@gmail.com</a>
+                </div>
+              </div>
+              <div class="contact-col">
+                <div class="white-icon-box"><svg><use href="#icon-phone"/></svg></div>
+                <div class="contact-text">
+                  <a href="tel:+998909009090">+998909009090</a>
+                  <a href="tel:+998909009090">+998909009090</a>
+                </div>
+              </div>
+              <div class="contact-col">
+                <div class="white-icon-box"><svg><use href="#icon-globe"/></svg></div>
+                <div class="contact-text">
+                  <a href="https://www.fayoza.uz">www.fayoza.uz</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+
+  </main>
+
+  <!-- ============================================================
+       INTERACTIVE VIEWER SCRIPT
+       ============================================================ -->
+  <script>
+    const stage = document.getElementById('bookletStage');
+    const toggleSpreadBtn = document.getElementById('toggleSpreadBtn');
+    const spreadBtnText = document.getElementById('spreadBtnText');
+    const jumpSelect = document.getElementById('jumpPageSelect');
+    const zoomInBtn = document.getElementById('zoomInBtn');
+    const zoomOutBtn = document.getElementById('zoomOutBtn');
+    const zoomLevelText = document.getElementById('zoomLevelText');
+    const printBtn = document.getElementById('printBtn');
+
+    let isSpreads = true;
+    let zoomLevel = 1.0;
+
+    // Toggle view mode
+    toggleSpreadBtn.addEventListener('click', () => {
+      isSpreads = !isSpreads;
+      if (isSpreads) {
+        stage.classList.remove('single-mode');
+        stage.classList.add('spreads-mode');
+        spreadBtnText.textContent = 'Yoyilma (Spreads)';
+      } else {
+        stage.classList.remove('spreads-mode');
+        stage.classList.add('single-mode');
+        spreadBtnText.textContent = 'Bittalik (Single)';
+      }
+    });
+
+    // Jump to page
+    jumpSelect.addEventListener('change', (e) => {
+      const pageId = e.target.value;
+      const targetEl = document.getElementById(pageId);
+      if (targetEl) {
+        targetEl.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      }
+    });
+
+    // Zoom controls
+    function updateZoom() {
+      stage.style.transform = `scale(${zoomLevel})`;
+      stage.style.transformOrigin = 'top center';
+      zoomLevelText.textContent = `${Math.round(zoomLevel * 100)}%`;
+    }
+
+    zoomInBtn.addEventListener('click', () => {
+      if (zoomLevel < 1.8) {
+        zoomLevel += 0.1;
+        updateZoom();
+      }
+    });
+
+    zoomOutBtn.addEventListener('click', () => {
+      if (zoomLevel > 0.5) {
+        zoomLevel -= 0.1;
+        updateZoom();
+      }
+    });
+
+    // Print to PDF
+    printBtn.addEventListener('click', () => {
+      window.print();
+    });
+  </script>
+</body>
+</html>
