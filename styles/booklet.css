@@ -793,6 +793,115 @@ p.body-text-sm {
   margin-bottom: 0;
 }
 
+.goal-list {
+  margin: 5px 0 0 14px;
+}
+
+.goal-list li {
+  font-family: var(--font-body);
+  font-size: 7pt;
+  line-height: 1.45;
+  color: #4b5563;
+  margin-bottom: 2px;
+}
+
+.goal-list li::marker {
+  color: var(--primary-red);
+}
+
+/* Iboralar jadvali */
+.phrase-table {
+  margin-top: 2px;
+}
+
+.phrase-row {
+  display: flex;
+  gap: 10px;
+  padding: 4px 0;
+  border-bottom: 0.5pt solid #eceef1;
+}
+
+.phrase-row:last-child {
+  border-bottom: none;
+}
+
+.phrase-ru {
+  flex: 0 0 42%;
+  font-family: var(--font-heading);
+  font-size: 7.5pt;
+  font-weight: 700;
+  color: #1f2937;
+}
+
+.phrase-uz {
+  flex: 1;
+  font-family: var(--font-body);
+  font-size: 7pt;
+  color: var(--text-muted);
+}
+
+/* Namuna dialog */
+.dialog-box {
+  background: var(--bg-card);
+  border-left: 3px solid var(--primary-red);
+  padding: 3mm 4.5mm;
+  margin-top: 2px;
+}
+
+.dialog-line {
+  font-family: var(--font-body);
+  font-size: 7pt;
+  line-height: 1.5;
+  color: #374151;
+  margin-bottom: 3px;
+}
+
+.dialog-line:last-child {
+  margin-bottom: 0;
+}
+
+.dash {
+  color: var(--primary-red);
+  font-weight: 700;
+  margin-right: 5px;
+}
+
+/* Amaliy vazifa dialogi */
+.task-dialog {
+  margin-top: 8px;
+}
+
+.task-line {
+  margin-top: 0;
+  margin-bottom: 13px;
+}
+
+/* Maslahatdagi ibora zanjiri */
+.chain {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 4px;
+  margin: 6px 0;
+}
+
+.chain .chip {
+  background: #ffffff;
+  border: 0.7pt solid var(--primary-red);
+  color: var(--primary-red);
+  font-family: var(--font-heading);
+  font-size: 6.2pt;
+  font-weight: 600;
+  padding: 2px 6px;
+  border-radius: 2px;
+}
+
+.chain .arrow {
+  color: var(--primary-red);
+  font-size: 7pt;
+  font-weight: 700;
+}
+
 /* ============================================================
    PAGE 3: INTRODUCTION
    ============================================================ */
