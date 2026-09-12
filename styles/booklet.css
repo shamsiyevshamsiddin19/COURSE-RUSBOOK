@@ -15,6 +15,11 @@
   --font-body: 'Inter', sans-serif;
   --page-width: 148mm;
   --page-height: 210mm;
+  --margin-top: 16mm;
+  --margin-bottom: 20mm;
+  --margin-inner: 18mm;
+  --margin-outer: 13mm;
+  --bleed: 0mm;
 }
 
 * {
@@ -165,13 +170,23 @@ html, body {
   background-color: #ffffff;
   position: relative;
   overflow: hidden;
-  padding: 16mm 15mm 20mm 15mm;
+  padding: var(--margin-top) var(--margin-outer) var(--margin-bottom) var(--margin-inner);
   flex-shrink: 0;
   display: flex;
   flex-direction: column;
 }
 
 /* Spreads fold effect */
+.page.left-page {
+  padding-left: var(--margin-outer);
+  padding-right: var(--margin-inner);
+}
+
+.page.right-page {
+  padding-left: var(--margin-inner);
+  padding-right: var(--margin-outer);
+}
+
 .spread-wrapper .page.left-page {
   border-right: 1px solid rgba(0, 0, 0, 0.06);
 }
@@ -241,11 +256,31 @@ p.body-text-sm {
 }
 
 .left-page .page-number {
-  left: 15mm;
+  left: var(--margin-outer);
 }
 
 .right-page .page-number {
-  right: 15mm;
+  right: var(--margin-outer);
+}
+
+/* Yuqoridagi kolontitul: qaysi darsdaligini ko'rsatadi */
+.running-head {
+  position: absolute;
+  top: 9mm;
+  font-family: var(--font-heading);
+  font-size: 6pt;
+  font-weight: 600;
+  letter-spacing: 1px;
+  color: #b9bec7;
+  z-index: 20;
+}
+
+.left-page .running-head {
+  left: var(--margin-outer);
+}
+
+.right-page .running-head {
+  right: var(--margin-outer);
 }
 
 /* ============================================================
@@ -1669,15 +1704,24 @@ p.body-text-sm {
   }
 
   .page {
-    width: 148mm !important;
-    height: 210mm !important;
+    width: calc(var(--page-width) + 2 * var(--bleed)) !important;
+    height: calc(var(--page-height) + 2 * var(--bleed)) !important;
     margin: 0 !important;
-    padding: 16mm 15mm 20mm 15mm !important;
     page-break-after: always !important;
     break-after: page !important;
     box-shadow: none !important;
     -webkit-print-color-adjust: exact !important;
     print-color-adjust: exact !important;
+  }
+
+  .page.left-page {
+    padding: calc(var(--margin-top) + var(--bleed)) calc(var(--margin-inner) + var(--bleed))
+             calc(var(--margin-bottom) + var(--bleed)) calc(var(--margin-outer) + var(--bleed)) !important;
+  }
+
+  .page.right-page {
+    padding: calc(var(--margin-top) + var(--bleed)) calc(var(--margin-outer) + var(--bleed))
+             calc(var(--margin-bottom) + var(--bleed)) calc(var(--margin-inner) + var(--bleed)) !important;
   }
 
   .page-cover {
@@ -1688,4 +1732,63 @@ p.body-text-sm {
     size: 148mm 210mm;
     margin: 0;
   }
+}
+
+
+/* ============================================================
+   BOSMAXONA REJIMI: 3mm bleed (node generate_pdf.js --print)
+   ============================================================ */
+body.bleed {
+  --bleed: 3mm;
+}
+
+body.bleed .page {
+  width: calc(var(--page-width) + 2 * var(--bleed));
+  height: calc(var(--page-height) + 2 * var(--bleed));
+  padding-top: calc(var(--margin-top) + var(--bleed));
+  padding-bottom: calc(var(--margin-bottom) + var(--bleed));
+}
+
+body.bleed .page.left-page {
+  padding-left: calc(var(--margin-outer) + var(--bleed));
+  padding-right: calc(var(--margin-inner) + var(--bleed));
+}
+
+body.bleed .page.right-page {
+  padding-left: calc(var(--margin-inner) + var(--bleed));
+  padding-right: calc(var(--margin-outer) + var(--bleed));
+}
+
+/* chetga chiqadigan bezaklar bleed maydonini to'ldirsin */
+body.bleed .bottom-facet {
+  height: calc(22mm + var(--bleed));
+  width: calc(90mm + var(--bleed));
+}
+
+body.bleed .page-number {
+  bottom: calc(8mm + var(--bleed));
+}
+
+body.bleed .running-head {
+  top: calc(9mm + var(--bleed));
+}
+
+body.bleed .left-page .page-number,
+body.bleed .left-page .running-head {
+  left: calc(var(--margin-outer) + var(--bleed));
+}
+
+body.bleed .right-page .page-number,
+body.bleed .right-page .running-head {
+  right: calc(var(--margin-outer) + var(--bleed));
+}
+
+/* Reja: dars yonidagi sahifa raqami */
+.toc2-lesson .toc2-page {
+  float: right;
+  font-family: var(--font-heading);
+  font-size: 6.3pt;
+  font-weight: 600;
+  color: var(--text-light);
+  margin-left: 8px;
 }
