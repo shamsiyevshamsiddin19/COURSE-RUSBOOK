@@ -641,6 +641,159 @@ p.body-text-sm {
 }
 
 /* ============================================================
+   DARS SAHIFALARI (УРОК)
+   ============================================================ */
+.lesson-eyebrow {
+  align-self: flex-start;
+  background: var(--primary-red);
+  color: #ffffff;
+  font-family: var(--font-heading);
+  font-size: 7.5pt;
+  font-weight: 700;
+  letter-spacing: 0.8px;
+  padding: 3px 10px;
+  border-radius: 2px;
+  margin-bottom: 7px;
+}
+
+.lesson-sub-ru {
+  font-family: var(--font-heading);
+  font-size: 10pt;
+  font-weight: 600;
+  font-style: italic;
+  color: var(--primary-red);
+  margin-top: 1px;
+}
+
+.lesson-sub-uz {
+  font-family: var(--font-body);
+  font-size: 7pt;
+  color: var(--text-muted);
+  margin-top: 3px;
+}
+
+.goal-box {
+  background: var(--red-soft);
+  border-left: 3px solid var(--primary-red);
+  padding: 3mm 4.5mm;
+  margin: 9px 0 10px 0;
+}
+
+.goal-title {
+  font-family: var(--font-heading);
+  font-size: 7pt;
+  font-weight: 700;
+  color: var(--primary-red);
+  letter-spacing: 0.5px;
+  margin-bottom: 3px;
+}
+
+.goal-text {
+  font-family: var(--font-body);
+  font-size: 7pt;
+  line-height: 1.45;
+  color: #4b5563;
+}
+
+.q-item {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 17px;
+}
+
+.q-num {
+  width: 16px;
+  height: 13px;
+  background: var(--primary-red);
+  color: #ffffff;
+  font-family: var(--font-heading);
+  font-size: 5.6pt;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 2px;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.q-body {
+  flex: 1;
+  min-width: 0;
+}
+
+.q-ru {
+  font-family: var(--font-heading);
+  font-size: 8pt;
+  font-weight: 700;
+  color: #1f2937;
+  line-height: 1.25;
+}
+
+.q-uz {
+  font-family: var(--font-body);
+  font-size: 6.5pt;
+  color: var(--text-light);
+  margin-top: 1px;
+}
+
+.q-answer {
+  display: flex;
+  align-items: flex-end;
+  gap: 5px;
+  margin-top: 6px;
+  font-family: var(--font-body);
+  font-size: 7pt;
+  color: #374151;
+}
+
+.write-line {
+  flex: 1;
+  border-bottom: 0.7pt solid #cbd5e1;
+  height: 13px;
+}
+
+.write-line.short {
+  flex: 0 0 34px;
+}
+
+.write-rows {
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+  margin-top: 22px;
+}
+
+.write-rows .write-line {
+  flex: none;
+  width: 100%;
+}
+
+.advice-box {
+  background: var(--bg-card);
+  border-left: 3px solid var(--primary-red);
+  padding: 3mm 4.5mm;
+  margin-top: 12px;
+}
+
+.advice-title {
+  font-family: var(--font-heading);
+  font-size: 7pt;
+  font-weight: 700;
+  color: var(--primary-red);
+  letter-spacing: 0.5px;
+  margin-bottom: 3px;
+}
+
+.advice-box p {
+  margin-bottom: 3px;
+}
+
+.advice-box p:last-child {
+  margin-bottom: 0;
+}
+
+/* ============================================================
    PAGE 3: INTRODUCTION
    ============================================================ */
 .intro-grid {
