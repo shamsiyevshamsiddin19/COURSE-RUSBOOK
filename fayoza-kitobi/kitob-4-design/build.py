@@ -30,8 +30,8 @@ import sys
 ROOT = pathlib.Path(__file__).parent
 E = html.escape
 
-# 1 muqova, 2-3 reja, 4 muallifdan, 5 belgilar — darslar 6-sahifadan
-FIRST_LESSON_PAGE = 6
+# 1 muqova, 2-3 reja, 4 muallifdan, 5 qo‘llanma, 6-7 alifbo — darslar 8-sahifadan
+FIRST_LESSON_PAGE = 8
 
 LEFT_FACET = """        <svg class="bottom-facet" viewBox="0 0 340 80" preserveAspectRatio="none">
           <polygon points="0,80 180,80 340,25 0,80" fill="#eaebee"/>
@@ -318,9 +318,9 @@ def b_cards(b):
     out = [f'{I}<div class="cards">']
     for c in b["items"]:
         out.append(f'{I}  <div class="card">\n'
-                   f'{I}    <div class="card-name">{E(c[0]).replace(chr(10), "<br>")}</div>\n'
-                   f'{I}    <div class="card-role">{E(c[1])}</div>\n'
-                   f'{I}    <div class="card-foot">{E(c[2])}</div>\n'
+                   f'{I}    <div class="card-name">{rich(c[0]).replace(chr(10), "<br>")}</div>\n'
+                   f'{I}    <div class="card-role">{rich(c[1])}</div>\n'
+                   f'{I}    <div class="card-foot">{rich(c[2])}</div>\n'
                    f'{I}  </div>')
     out.append(f'{I}</div>')
     return "\n".join(out)
@@ -482,7 +482,8 @@ def update_toc(text, starts):
 
 def update_nav(text, nav, total):
     rows = ["01. Muqova", "02. Reja (1–4-modul)", "03. Reja (5–8-modul)",
-            "04. Muallifdan", "05. Kitobdan qanday foydalanish"]
+            "04. Muallifdan", "05. Kitobdan qanday foydalanish",
+            "06. Rus alifbosi", "07. Rus alifbosi — uchta guruh"]
     rows += [f"{p:02d}. {name}" for p, name in nav]
     rows.append(f"{total:02d}. Orqa muqova")
     opts = "".join(f'    <option value="page-{i + 1}">{E(r)}</option>\n'

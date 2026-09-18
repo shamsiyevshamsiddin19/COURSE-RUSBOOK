@@ -1049,3 +1049,76 @@ body.bleed .page.left-page  { padding: 21mm 25mm 19mm 23mm; }
   margin-top: 2.5mm;
   border-top: 1px solid var(--rule-soft);
 }
+
+/* ------------------------ 22. Rus alifbosi ----------------- */
+
+.abc {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1px;
+  background: var(--rule);
+  border: 1px solid var(--rule);
+  margin-bottom: 4mm;
+}
+.abc-cell {
+  background: #fff;
+  padding: 2.4mm 2.6mm;
+}
+.abc-letter {
+  font-family: var(--f-head);
+  font-weight: 800;
+  font-size: 13pt;
+  line-height: 1;
+  margin-bottom: 1.1mm;
+}
+.abc-say {
+  font-size: 8.2pt;
+  color: var(--blue);
+  margin-bottom: 1mm;
+}
+.abc-ex { font-size: 8.4pt; color: var(--ink-soft); line-height: 1.35; }
+.abc-ex .w { font-weight: 600; color: var(--ink); }
+
+/* uchta guruh: tanish / aldamchi / yangi */
+.abc-group { margin-bottom: 2.4mm; }
+.abc-group-head {
+  font-family: var(--f-head);
+  font-weight: 800;
+  font-size: 9.6pt;
+  margin-bottom: 1.6mm;
+}
+.abc-strip {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5mm;
+  margin-bottom: 1mm;
+}
+.abc-chip {
+  font-family: var(--f-head);
+  font-weight: 700;
+  font-size: 12pt;
+  min-width: 11mm;
+  text-align: center;
+  padding: 1.6mm 1mm;
+  border: 1px solid var(--rule);
+  border-radius: 3px;
+  background: #fff;
+}
+.abc-group.trap .abc-chip { border-color: var(--red-line); background: var(--red-tint); }
+.abc-group.same .abc-chip { border-color: var(--teal-line); background: var(--teal-tint); }
+.abc-group.new  .abc-chip { border-color: var(--blue-line); background: var(--blue-tint); }
+
+/* xalqaro so'zlar — o'qishga urinish uchun */
+.abc-words {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2mm 3mm;
+}
+.abc-word {
+  font-size: 11pt;
+  font-weight: 600;
+  padding: 1.6mm 3.4mm;
+  border: 1px solid var(--rule);
+  border-radius: 100px;
+  background: #fff;
+}
