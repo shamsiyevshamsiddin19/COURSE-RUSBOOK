@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 140 70" width="140" height="70">
+  <rect width="140" height="70" fill="#ffffff" rx="4"/>
+  <!-- Bars -->
+  <g fill="#000000">
+    <!-- Guard pattern -->
+    <rect x="12" y="6" width="2" height="48"/>
+    <rect x="16" y="6" width="2" height="48"/>
+    
+    <!-- Left group -->
+    <rect x="22" y="6" width="1.5" height="42"/>
+    <rect x="25" y="6" width="3" height="42"/>
+    <rect x="30" y="6" width="1.5" height="42"/>
+    <rect x="34" y="6" width="4" height="42"/>
+    <rect x="40" y="6" width="2" height="42"/>
+    <rect x="44" y="6" width="1.5" height="42"/>
+    <rect x="48" y="6" width="3.5" height="42"/>
+    <rect x="54" y="6" width="1.5" height="42"/>
+    <rect x="58" y="6" width="2" height="42"/>
+    <rect x="63" y="6" width="3" height="42"/>
+    
+    <!-- Center guard -->
+    <rect x="68" y="6" width="2" height="48"/>
+    <rect x="72" y="6" width="2" height="48"/>
+    
+    <!-- Right group -->
+    <rect x="77" y="6" width="2.5" height="42"/>
+    <rect x="82" y="6" width="1.5" height="42"/>
+    <rect x="86" y="6" width="3.5" height="42"/>
+    <rect x="91" y="6" width="2" height="42"/>
+    <rect x="95" y="6" width="1.5" height="42"/>
+    <rect x="99" y="6" width="4" height="42"/>
+    <rect x="105" y="6" width="2" height="42"/>
+    <rect x="110" y="6" width="3" height="42"/>
+    <rect x="115" y="6" width="1.5" height="42"/>
+    <rect x="119" y="6" width="3" height="42"/>
+    
+    <!-- Right guard -->
+    <rect x="124" y="6" width="2" height="48"/>
+    <rect x="128" y="6" width="2" height="48"/>
+  </g>
+  <!-- Text -->
+  <text x="70" y="62" font-family="'Courier New', monospace" font-size="10" font-weight="bold" fill="#000000" text-anchor="middle" letter-spacing="2">9 780201 379624</text>
+</svg>

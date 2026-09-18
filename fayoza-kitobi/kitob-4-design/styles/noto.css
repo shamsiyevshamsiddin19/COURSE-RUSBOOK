@@ -1,0 +1,32 @@
+/* Noto Sans — kitob matni uchun (OFL 1.1).
+   Inter ishlatilmaydi: uning Google Fonts subseti U+0301 (urg'u)
+   belgisini unliga biriktirmaydi — urg'u keyingi harf ustiga tushadi. */
+
+@font-face {
+  font-family: 'Noto Sans';
+  font-style: normal;
+  font-weight: 400;
+  font-display: block;
+  src: url(../assets/fonts/notosans-400.woff2) format('woff2');
+}
+@font-face {
+  font-family: 'Noto Sans';
+  font-style: italic;
+  font-weight: 400;
+  font-display: block;
+  src: url(../assets/fonts/notosans-400i.woff2) format('woff2');
+}
+@font-face {
+  font-family: 'Noto Sans';
+  font-style: normal;
+  font-weight: 700;
+  font-display: block;
+  src: url(../assets/fonts/notosans-700.woff2) format('woff2');
+}
+@font-face {
+  font-family: 'Noto Sans';
+  font-style: italic;
+  font-weight: 700;
+  font-display: block;
+  src: url(../assets/fonts/notosans-700i.woff2) format('woff2');
+}

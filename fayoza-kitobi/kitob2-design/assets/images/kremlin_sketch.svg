@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 120" width="300" height="120" opacity="0.35">
+  <!-- Delicate architectural line sketch of Kremlin spires & St Basil's domes -->
+  <g stroke="#1e3a8a" stroke-width="1.2" fill="none" stroke-linecap="round" stroke-linejoin="round">
+    <!-- Ground line -->
+    <line x1="10" y1="110" x2="290" y2="110" stroke-width="1"/>
+    
+    <!-- Central high spire (Spasskaya) -->
+    <path d="M140 110 V50 H160 V110"/>
+    <path d="M142 50 L150 15 L158 50 Z"/>
+    <circle cx="150" cy="12" r="2.5" fill="#1e3a8a"/>
+    <line x1="150" y1="5" x2="150" y2="12"/>
+    <circle cx="150" cy="65" r="6"/>
+    <!-- Clocks -->
+    <line x1="150" y1="65" x2="150" y2="61"/>
+    <line x1="150" y1="65" x2="153" y2="65"/>
+
+    <!-- Left Onion Dome (St Basil style) -->
+    <path d="M85 110 V65 H115 V110"/>
+    <path d="M85 65 C85 50 95 40 100 25 C105 40 115 50 115 65 Z"/>
+    <line x1="100" y1="25" x2="100" y2="18"/>
+    <!-- Ribs of dome -->
+    <path d="M92 65 C92 53 98 42 100 25"/>
+    <path d="M108 65 C108 53 102 42 100 25"/>
+
+    <!-- Right Spire Tower -->
+    <path d="M185 110 V70 H205 V110"/>
+    <path d="M185 70 L195 35 L205 70 Z"/>
+    <circle cx="195" cy="32" r="2" fill="#1e3a8a"/>
+
+    <!-- Far left lower turret -->
+    <path d="M40 110 V80 H65 V110"/>
+    <path d="M40 80 C40 70 50 60 52.5 48 C55 60 65 70 65 80 Z"/>
+    
+    <!-- Far right tower -->
+    <path d="M225 110 V78 H250 V110"/>
+    <path d="M225 78 L237.5 45 L250 78 Z"/>
+    <circle cx="237.5" cy="42" r="1.8" fill="#1e3a8a"/>
+    
+    <!-- Wall crenellations (dovetails) -->
+    <path d="M20 110 V95 H30 V98 H35 V95 H40 M65 95 H75 V98 H80 V95 H85 M115 95 H125 V98 H130 V95 H140 M160 95 H170 V98 H175 V95 H185 M205 95 H215 V98 H220 V95 H225 M250 95 H260 V98 H265 V95 H280 V110"/>
+  </g>
+</svg>

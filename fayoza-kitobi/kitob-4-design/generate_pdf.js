@@ -1,8 +1,10 @@
 /**
- * A5 PDF yig'adi.
+ * A4 PDF yig'adi.
  *
- *   node generate_pdf.js            -> fayoza-rus-tili.pdf      (o'qish uchun, 148x210mm)
- *   node generate_pdf.js --print    -> fayoza-rus-tili-print.pdf (bosmaxona uchun, 3mm bleed)
+ *   node generate_pdf.js          -> fayoza-rus-tili.pdf       (o'qish uchun, 210x297mm)
+ *   node generate_pdf.js --print  -> fayoza-rus-tili-print.pdf (bosmaxona uchun, 3mm bleed)
+ *
+ * Avval `python3 build.py` ni ishga tushiring — u index.html ni yangilaydi.
  */
 
 const { execSync } = require('child_process');
@@ -16,13 +18,18 @@ const outputPdf = path.resolve(
   isPrint ? 'fayoza-rus-tili-print.pdf' : 'fayoza-rus-tili.pdf'
 );
 
+if (!fs.existsSync(inputHtml)) {
+  console.error('index.html topilmadi. Avval: python3 build.py');
+  process.exit(1);
+}
+
 let sourceUrl = `file://${inputHtml}`;
 let tempHtml = null;
 
 if (isPrint) {
   // bleed rejimi: body ga .bleed sinfi va kattaroq @page o'lchami qo'shiladi
   const bleedStyle =
-    '<style>@page { size: 154mm 216mm !important; margin: 0 !important; }</style>';
+    '<style>@page { size: 216mm 303mm !important; margin: 0 !important; }</style>';
   const html = fs
     .readFileSync(inputHtml, 'utf8')
     .replace('</head>', `  ${bleedStyle}\n</head>`)
@@ -34,9 +41,25 @@ if (isPrint) {
 
 console.log(`${isPrint ? 'Bosmaxona' : "O'qish"} PDF: ${path.basename(outputPdf)}`);
 
+const chrome = ['google-chrome', 'google-chrome-stable', 'chromium', 'chromium-browser']
+  .find((bin) => {
+    try {
+      execSync(`command -v ${bin}`, { stdio: 'ignore' });
+      return true;
+    } catch (e) {
+      return false;
+    }
+  });
+
+if (!chrome) {
+  console.error('Chrome/Chromium topilmadi.');
+  process.exit(1);
+}
+
 const cmd = [
-  'google-chrome --headless --disable-gpu',
+  `${chrome} --headless --disable-gpu --no-sandbox`,
   '--no-pdf-header-footer --run-all-compositor-stages-before-draw',
+  '--virtual-time-budget=20000',
   `--print-to-pdf="${outputPdf}"`,
   `"${sourceUrl}"`,
 ].join(' ');
@@ -46,7 +69,7 @@ try {
   const mb = (fs.statSync(outputPdf).size / 1024 / 1024).toFixed(2);
   console.log(`Tayyor: ${outputPdf} (${mb} MB)`);
   if (isPrint) {
-    console.log('Sahifa o‘lchami 154x216mm — 3mm bleed bilan. Bosmaxonaga shu fayl beriladi.');
+    console.log('Sahifa o‘lchami 216x303mm — 3mm bleed bilan. Bosmaxonaga shu fayl beriladi.');
   }
 } catch (err) {
   console.error('PDF yig‘ishda xato:', err.message);

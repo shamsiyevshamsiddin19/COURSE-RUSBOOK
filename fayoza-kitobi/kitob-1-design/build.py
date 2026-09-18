@@ -285,7 +285,7 @@ def update_nav(html_text, lessons, starts, total):
     old = re.search(r'        <option value="page-1">.*?</option>\n(?:        <option.*?</option>\n)+',
                     html_text, re.S).group(0)
     html_text = html_text.replace(old, new)
-    html_text = re.sub(r'A5 Format \(\d+ Pages\)', f'A5 Format ({total} Pages)', html_text)
+    html_text = re.sub(r'A4 Format \(\d+ Pages\)', f'A4 Format ({total} Pages)', html_text)
     return re.sub(r'Kurs Kitobi — \d+ Sahifa', f'Kurs Kitobi — {total} Sahifa', html_text)
 
 

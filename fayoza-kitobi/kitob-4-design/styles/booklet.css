@@ -1,0 +1,1051 @@
+/* =============================================================
+   FAYOZA · RUS TILI — kitob-4
+   A4 (210x297 mm) darslik uslublari
+
+   Tuzilishi:
+     01. Asos va o'zgaruvchilar
+     02. Sahifa geometriyasi
+     03. Ekranda ko'rish (booklet stage)
+     04. Tipografika
+     05. Muqova
+     06. Reja (mundarija)
+     07. Dars sarlavhasi va maqsadlar
+     08. Bo'lim nishoni (section badge)
+     09. Dialog
+     10. Lug'at jadvali
+     11. Grammatika
+     12. Talaffuz
+     13. Mashqlar
+     14. Yozuv chiziqlari
+     15. Nutq / rolli o'yin
+     16. Madaniyat va maslahat qutilari
+     17. O'z-o'zini tekshirish
+     18. Kolontitul, sahifa raqami, burchak
+     19. Chop etish qoidalari
+   ============================================================= */
+
+/* ------------------------------------------------ 01. Asos */
+
+:root {
+  /* brend */
+  --red: #e03538;
+  --red-dark: #ca282c;
+  --red-tint: #fdf0f0;
+  --red-line: #f3c9ca;
+
+  /* siyoh */
+  --ink: #16191d;
+  --ink-soft: #3d4450;
+  --muted: #7b8595;
+  --faint: #aab2bf;
+
+  /* yordamchi ranglar */
+  --blue: #2563a8;
+  --blue-tint: #eef4fb;
+  --blue-line: #c5d9ee;
+
+  --amber: #a8720f;
+  --amber-tint: #fdf6e7;
+  --amber-line: #eddcb4;
+
+  --teal: #17756a;
+  --teal-tint: #ecf7f5;
+  --teal-line: #bfe0da;
+
+  /* qog'oz */
+  --paper: #ffffff;
+  --rule: #e4e7ec;
+  --rule-soft: #eef0f3;
+  --write: #b9c2ce;
+
+  /* o'lchamlar */
+  --page-w: 210mm;
+  --page-h: 297mm;
+  --pad-top: 18mm;
+  --pad-out: 20mm;   /* tashqi chekka */
+  --pad-in: 22mm;    /* ichki chekka (muqovaga yaqin) */
+  --pad-bot: 16mm;
+
+  /* Matn fonti — Noto Sans. Inter ISHLATILMAYDI: uning Google Fonts
+     subseti U+0301 (urg'u) belgisini unliga biriktirmaydi, natijada
+     urg'u keyingi harf ustiga tushadi (Ша́хло -> Шах́ло). */
+  --f-head: 'Montserrat', 'Noto Sans', sans-serif;
+  --f-body: 'Noto Sans', 'DejaVu Sans', sans-serif;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  font-family: var(--f-body);
+  color: var(--ink);
+  background: #d9dce1;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  font-feature-settings: 'kern' 1, 'liga' 1;
+}
+
+/* ------------------------------------- 02. Sahifa geometriyasi */
+
+.page {
+  position: relative;
+  width: var(--page-w);
+  height: var(--page-h);
+  background: var(--paper);
+  overflow: hidden;
+  display: block;
+  page-break-after: always;
+  break-after: page;
+}
+
+.page.right-page { padding: var(--pad-top) var(--pad-out) var(--pad-bot) var(--pad-in); }
+.page.left-page  { padding: var(--pad-top) var(--pad-in) var(--pad-bot) var(--pad-out); }
+
+/* sahifa ichidagi oqim — har doim BITTA ustun */
+.page > * { position: relative; z-index: 2; }
+
+/* ------------------------------ 03. Ekranda ko'rish (stage) */
+
+.booklet-stage {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 26px;
+  padding: 100px 20px 60px;
+}
+
+.spread-wrapper {
+  display: flex;
+  gap: 0;
+  box-shadow: 0 12px 40px rgba(0, 0, 0, .18);
+}
+
+.spread-wrapper .page { box-shadow: none; }
+
+.booklet-stage.pages-mode .spread-wrapper {
+  flex-direction: column;
+  gap: 26px;
+  box-shadow: none;
+}
+.booklet-stage.pages-mode .spread-wrapper .page {
+  box-shadow: 0 12px 40px rgba(0, 0, 0, .18);
+}
+
+.controls-bar {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 999;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 18px;
+  background: #16191d;
+  color: #fff;
+  font-size: 13px;
+}
+.controls-bar .brand-badge {
+  font-family: var(--f-head);
+  font-weight: 800;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  font-size: 12px;
+  color: #fff;
+  padding-right: 14px;
+  margin-right: 4px;
+  border-right: 1px solid #3a3f47;
+}
+.controls-bar .spacer { flex: 1; }
+.control-btn {
+  font: inherit;
+  padding: 7px 14px;
+  border: 1px solid #3a3f47;
+  border-radius: 6px;
+  background: #22262c;
+  color: #e6e9ee;
+  cursor: pointer;
+}
+.control-btn:hover { background: #2c313a; }
+.control-btn.primary { background: var(--red); border-color: var(--red); color: #fff; }
+.page-select {
+  font: inherit;
+  padding: 7px 10px;
+  border: 1px solid #3a3f47;
+  border-radius: 6px;
+  background: #22262c;
+  color: #e6e9ee;
+  max-width: 320px;
+}
+
+/* ------------------------------------------- 04. Tipografika */
+
+.page {
+  font-size: 10.2pt;
+  line-height: 1.5;
+}
+
+.ru { font-weight: 600; color: var(--ink); }
+.uz { color: var(--muted); font-size: .88em; }
+
+p + p { margin-top: .5em; }
+
+.body-text   { font-size: 10.2pt; line-height: 1.55; color: var(--ink-soft); }
+.body-text-sm{ font-size: 9.2pt;  line-height: 1.5;  color: var(--ink-soft); }
+.lead        { font-size: 11pt;   line-height: 1.5;  color: var(--ink-soft); }
+
+b, strong { font-weight: 700; color: var(--ink); }
+em { font-style: italic; }
+
+/* rus tilidagi urg'u qo'yilgan bo'g'in ko'rinishi */
+.stress { font-weight: 700; }
+
+/* --------------------------------------------- 05. Muqova */
+
+.cover-page {
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  background: var(--paper);
+}
+
+.cover-rule-field {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background-image: repeating-linear-gradient(
+    to right, var(--rule-soft) 0 1px, transparent 1px 11mm);
+}
+
+.cover-head {
+  position: relative;
+  z-index: 2;
+  padding: 24mm var(--pad-out) 0;
+}
+.cover-mark {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+}
+.cover-mark-glyph { width: 26px; height: 26px; }
+.cover-mark-name {
+  font-family: var(--f-head);
+  font-weight: 800;
+  font-size: 18pt;
+  letter-spacing: -.01em;
+}
+.cover-mark-sub {
+  font-size: 7.5pt;
+  letter-spacing: .34em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-top: 2px;
+}
+
+.cover-band {
+  position: relative;
+  z-index: 2;
+  margin: 34mm 0 0;
+  padding: 16mm var(--pad-out);
+  background: var(--red);
+  color: #fff;
+}
+.cover-eyebrow {
+  font-family: var(--f-head);
+  font-weight: 700;
+  font-size: 10pt;
+  letter-spacing: .3em;
+  text-transform: uppercase;
+  opacity: .9;
+}
+.cover-title {
+  font-family: var(--f-head);
+  font-weight: 900;
+  font-size: 44pt;
+  line-height: 1.02;
+  letter-spacing: -.015em;
+  margin: 6mm 0 4mm;
+}
+.cover-claim {
+  font-family: var(--f-head);
+  font-weight: 700;
+  font-size: 13pt;
+  letter-spacing: .02em;
+  margin-bottom: 7mm;
+}
+.cover-quote {
+  font-size: 9.6pt;
+  font-style: italic;
+  line-height: 1.55;
+  max-width: 125mm;
+  opacity: .95;
+}
+
+.cover-meta {
+  position: relative;
+  z-index: 2;
+  margin-top: auto;
+  padding: 0 var(--pad-out) 18mm;
+  display: flex;
+  gap: 10mm;
+}
+.cover-meta-item { display: flex; align-items: flex-start; gap: 6px; }
+.cover-meta-dot {
+  width: 15px; height: 15px; border-radius: 50%;
+  background: var(--red); flex: none; margin-top: 1px;
+}
+.cover-meta-text { font-size: 8.4pt; line-height: 1.4; color: var(--ink-soft); }
+
+.cover-level-row {
+  position: relative;
+  z-index: 2;
+  padding: 8mm var(--pad-out) 0;
+  display: flex;
+  gap: 6px;
+}
+.level-pill {
+  font-family: var(--f-head);
+  font-weight: 700;
+  font-size: 8pt;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  padding: 5px 11px;
+  border: 1.2px solid var(--red-line);
+  border-radius: 100px;
+  color: var(--red-dark);
+  background: var(--red-tint);
+}
+
+/* ------------------------------------------ 06. Reja (TOC) */
+
+.toc-head {
+  font-family: var(--f-head);
+  font-weight: 900;
+  font-size: 26pt;
+  letter-spacing: -.01em;
+  margin-bottom: 1mm;
+}
+.toc-sub {
+  font-size: 9.4pt;
+  color: var(--muted);
+  margin-bottom: 5mm;
+  padding-bottom: 3mm;
+  border-bottom: 2px solid var(--red);
+}
+
+.toc-module {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+  margin: 3.4mm 0 1.6mm;
+}
+.toc-module-n {
+  font-family: var(--f-head);
+  font-weight: 800;
+  font-size: 8pt;
+  letter-spacing: .1em;
+  color: #fff;
+  background: var(--red);
+  padding: 3px 7px;
+  border-radius: 3px;
+}
+.toc-module-name {
+  font-family: var(--f-head);
+  font-weight: 700;
+  font-size: 11.5pt;
+}
+.toc-module-note { font-size: 8.6pt; color: var(--muted); margin-left: auto; }
+
+.toc-row {
+  display: flex;
+  align-items: baseline;
+  gap: 7px;
+  padding: 0.85mm 0;
+  border-bottom: 1px solid var(--rule-soft);
+  font-size: 9.6pt;
+}
+.toc-row-n { color: var(--red); font-weight: 700; min-width: 8mm; }
+.toc-row-ru { font-weight: 600; }
+.toc-row-uz { color: var(--muted); font-size: .9em; }
+.toc-dots {
+  flex: 1;
+  border-bottom: 1px dotted var(--faint);
+  margin: 0 4px 3px;
+  min-width: 6mm;
+}
+.toc-row-p { font-weight: 700; color: var(--ink); font-variant-numeric: tabular-nums; }
+.toc-row.pending .toc-row-p { color: var(--faint); font-weight: 500; }
+
+/* --------------------------- 07. Dars sarlavhasi va maqsadlar */
+
+.lesson-eyebrow {
+  display: inline-block;
+  font-family: var(--f-head);
+  font-weight: 800;
+  font-size: 8.4pt;
+  letter-spacing: .18em;
+  color: #fff;
+  background: var(--red);
+  padding: 4px 11px;
+  border-radius: 3px;
+  margin-bottom: 4mm;
+}
+.lesson-title {
+  font-family: var(--f-head);
+  font-weight: 900;
+  font-size: 27pt;
+  line-height: 1.06;
+  letter-spacing: -.015em;
+  margin-bottom: 2mm;
+}
+.lesson-title-uz {
+  font-size: 12pt;
+  color: var(--red-dark);
+  font-weight: 600;
+  font-style: italic;
+  margin-bottom: 5mm;
+  padding-bottom: 5mm;
+  border-bottom: 1px solid var(--rule);
+}
+
+.cando {
+  background: var(--red-tint);
+  border-left: 3px solid var(--red);
+  padding: 4.5mm 5mm;
+  margin-bottom: 6mm;
+}
+.cando-title {
+  font-family: var(--f-head);
+  font-weight: 800;
+  font-size: 8.4pt;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: var(--red-dark);
+  margin-bottom: 2.5mm;
+}
+.cando-list { list-style: none; }
+.cando-list li {
+  position: relative;
+  padding-left: 6.5mm;
+  font-size: 9.4pt;
+  line-height: 1.5;
+  color: var(--ink-soft);
+  margin-bottom: 1.4mm;
+}
+.cando-list li::before {
+  content: '';
+  position: absolute;
+  left: 0; top: 1.55mm;
+  width: 3.4mm; height: 1.9mm;
+  border-left: 1.6px solid var(--red);
+  border-bottom: 1.6px solid var(--red);
+  transform: rotate(-45deg);
+}
+
+/* ------------------------------------- 08. Bo'lim nishoni */
+
+.sec {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin: 6.5mm 0 3.5mm;
+}
+.sec:first-child { margin-top: 0; }
+.sec-ru {
+  font-family: var(--f-head);
+  font-weight: 800;
+  font-size: 10.5pt;
+  letter-spacing: .16em;
+  text-transform: uppercase;
+  color: var(--red-dark);
+  white-space: nowrap;
+}
+.sec-uz {
+  font-size: 8.6pt;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: var(--muted);
+  white-space: nowrap;
+}
+.sec-line { flex: 1; height: 2px; background: var(--red); opacity: .25; }
+
+/* ------------------------------------------------ 09. Dialog */
+
+.dlg { margin-bottom: 4mm; }
+.dlg-scene {
+  font-size: 8.8pt;
+  font-style: italic;
+  color: var(--muted);
+  margin-bottom: 2mm;
+  display: flex;
+  align-items: baseline;
+  gap: 6px;
+}
+.dlg-scene-n {
+  font-family: var(--f-head);
+  font-style: normal;
+  font-weight: 800;
+  font-size: 7.6pt;
+  color: #fff;
+  background: var(--ink);
+  width: 4.6mm; height: 4.6mm;
+  border-radius: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex: none;
+}
+.dlg-body {
+  border-left: 2.5px solid var(--red-line);
+  padding-left: 4mm;
+}
+.dlg-line {
+  display: flex;
+  gap: 4px;
+  font-size: 10pt;
+  line-height: 1.5;
+  margin-bottom: 1.1mm;
+}
+.dlg-who {
+  font-weight: 700;
+  color: var(--red-dark);
+  min-width: 24mm;
+  flex: none;
+}
+.dlg-text { flex: 1; }
+.dlg-tr {
+  display: block;
+  font-size: 8.5pt;
+  color: var(--muted);
+  font-weight: 400;
+}
+
+/* --------------------------------------- 10. Lug'at jadvali */
+
+.vocab {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 9.6pt;
+}
+.vocab thead th {
+  font-family: var(--f-head);
+  font-weight: 700;
+  font-size: 7.8pt;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: var(--muted);
+  text-align: left;
+  padding: 0 2mm 1.6mm;
+  border-bottom: 1.5px solid var(--rule);
+}
+.vocab td {
+  padding: 1.55mm 2mm;
+  border-bottom: 1px solid var(--rule-soft);
+  vertical-align: baseline;
+}
+.vocab tr:last-child td { border-bottom: none; }
+.vocab .v-ru { font-weight: 600; width: 34%; }
+.vocab .v-tr { color: var(--blue); font-size: 8.8pt; width: 24%; font-style: italic; }
+.vocab .v-uz { color: var(--ink-soft); }
+.vocab .v-note { color: var(--muted); font-size: 8.4pt; }
+
+/* --------------------------------------------- 11. Grammatika */
+
+.gram {
+  background: var(--blue-tint);
+  border: 1px solid var(--blue-line);
+  border-radius: 4px;
+  padding: 4.5mm 5mm;
+  margin-bottom: 4mm;
+}
+.gram-title {
+  font-family: var(--f-head);
+  font-weight: 800;
+  font-size: 10pt;
+  color: var(--blue);
+  margin-bottom: 2mm;
+}
+.gram p { font-size: 9.4pt; line-height: 1.55; color: var(--ink-soft); }
+
+/* qiyoslash: rus | o'zbek */
+.pair {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 2.5mm 0;
+  font-size: 9.6pt;
+}
+.pair td { padding: 1.3mm 2mm; vertical-align: baseline; }
+.pair .p-ru { font-weight: 600; width: 48%; }
+.pair .p-uz { color: var(--muted); }
+.pair tr + tr td { border-top: 1px solid var(--blue-line); }
+
+/* to'liq jadval (tuslanish, turlanish) */
+.gtable {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 2.5mm 0;
+  font-size: 9.2pt;
+  background: #fff;
+}
+.gtable th {
+  font-family: var(--f-head);
+  font-weight: 700;
+  font-size: 8pt;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+  color: var(--muted);
+  background: #f6f8fa;
+  padding: 2mm;
+  border: 1px solid var(--rule);
+  text-align: left;
+}
+.gtable td {
+  padding: 1.8mm 2mm;
+  border: 1px solid var(--rule);
+}
+.gtable td.k { font-weight: 600; color: var(--ink); background: #fbfcfd; }
+.gtable td.hl { color: var(--red-dark); font-weight: 700; }
+
+.gram-note {
+  font-size: 8.8pt;
+  line-height: 1.5;
+  color: var(--ink-soft);
+  background: #fff;
+  border-left: 2.5px solid var(--blue-line);
+  padding: 2.4mm 3mm;
+  margin-top: 2.5mm;
+}
+
+/* ----------------------------------------------- 12. Talaffuz */
+
+.pron {
+  background: var(--amber-tint);
+  border: 1px solid var(--amber-line);
+  border-radius: 4px;
+  padding: 4.5mm 5mm;
+  margin-bottom: 4mm;
+}
+.pron-title {
+  font-family: var(--f-head);
+  font-weight: 800;
+  font-size: 10pt;
+  color: var(--amber);
+  margin-bottom: 2mm;
+}
+.pron p { font-size: 9.4pt; line-height: 1.55; color: var(--ink-soft); }
+.pron-row {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+  padding: 1.5mm 0;
+  border-top: 1px solid var(--amber-line);
+  font-size: 9.4pt;
+}
+.pron-row:first-of-type { border-top: none; }
+.pron-ru { font-weight: 700; min-width: 30mm; }
+.pron-say { color: var(--amber); font-style: italic; min-width: 32mm; }
+.pron-why { color: var(--ink-soft); font-size: 8.8pt; flex: 1; }
+
+/* ------------------------------------------------ 13. Mashqlar */
+
+.ex { margin-bottom: 4.5mm; }
+.ex-head {
+  display: flex;
+  align-items: baseline;
+  gap: 6px;
+  margin-bottom: 2mm;
+}
+.ex-n {
+  font-family: var(--f-head);
+  font-weight: 800;
+  font-size: 8.6pt;
+  color: #fff;
+  background: var(--red);
+  min-width: 5.4mm;
+  height: 5.4mm;
+  border-radius: 3px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex: none;
+  padding: 0 1px;
+}
+.ex-task { font-size: 9.6pt; font-weight: 600; color: var(--ink); }
+.ex-task .hint { font-weight: 400; color: var(--muted); font-size: .92em; }
+
+.ex-items { padding-left: 6.4mm; }
+.ex-item {
+  display: flex;
+  align-items: baseline;
+  gap: 5px;
+  font-size: 9.8pt;
+  line-height: 1.6;
+  padding: .9mm 0;
+}
+.ex-let {
+  color: var(--red);
+  font-weight: 700;
+  min-width: 5.5mm;
+  flex: none;
+}
+.ex-body { flex: 1; }
+.ex-opts {
+  color: var(--muted);
+  font-size: 8.8pt;
+  font-style: italic;
+  white-space: nowrap;
+  margin-left: auto;
+  padding-left: 5mm;
+}
+
+/* bo'shliq (gap) */
+.gap {
+  display: inline-block;
+  min-width: 22mm;
+  border-bottom: 1px solid var(--write);
+  margin: 0 2px;
+  vertical-align: baseline;
+}
+.gap.sm { min-width: 13mm; }
+.gap.lg { min-width: 38mm; }
+
+/* moslashtirish mashqi ikki ustun */
+.match {
+  display: flex;
+  gap: 10mm;
+  padding-left: 6.4mm;
+}
+.match-col { flex: 1; }
+.match-row {
+  display: flex;
+  align-items: baseline;
+  gap: 5px;
+  font-size: 9.6pt;
+  padding: 1.1mm 0;
+  border-bottom: 1px solid var(--rule-soft);
+}
+
+/* variantli (multiple choice) */
+.choice { display: flex; flex-wrap: wrap; gap: 3mm 6mm; padding: .8mm 0 .8mm 0; }
+.choice-opt {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 9.4pt;
+}
+.choice-box {
+  width: 3.4mm; height: 3.4mm;
+  border: 1.2px solid var(--write);
+  border-radius: 2px;
+  flex: none;
+}
+
+/* ------------------------------------ 14. Yozuv chiziqlari */
+
+.write-line {
+  display: inline-block;
+  flex: 1;
+  min-width: 20mm;
+  border-bottom: 1px solid var(--write);
+  height: 1em;
+  vertical-align: baseline;
+}
+.write-rows { padding-left: 6.4mm; }
+.write-rows .row {
+  border-bottom: 1px solid var(--write);
+  height: 7.5mm;
+}
+.write-rows.tight .row { height: 6.2mm; }
+
+/* ----------------------------------- 15. Nutq / rolli o'yin */
+
+.roleplay {
+  display: flex;
+  gap: 0;
+  border: 1px solid var(--rule);
+  border-radius: 4px;
+  overflow: hidden;
+  margin: 2.5mm 0 3mm;
+}
+.role-col { flex: 1; }
+.role-col + .role-col { border-left: 1px solid var(--rule); }
+.role-head {
+  font-family: var(--f-head);
+  font-weight: 800;
+  font-size: 8.4pt;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  padding: 2.2mm 3mm;
+  background: #f6f8fa;
+  border-bottom: 1px solid var(--rule);
+  color: var(--ink);
+}
+.role-step {
+  font-size: 9.2pt;
+  line-height: 1.45;
+  padding: 2mm 3mm;
+  color: var(--ink-soft);
+  min-height: 11mm;
+}
+.role-step + .role-step { border-top: 1px solid var(--rule-soft); }
+
+.model {
+  background: #f6f8fa;
+  border-radius: 4px;
+  padding: 3mm 4mm;
+  margin: 2.5mm 0;
+  font-size: 9.6pt;
+  line-height: 1.65;
+}
+.model .m-line { display: block; }
+.model .m-line .dash { color: var(--red); font-weight: 700; margin-right: 4px; }
+
+/* -------------------------- 16. Madaniyat va maslahat qutilari */
+
+.culture {
+  background: var(--teal-tint);
+  border: 1px solid var(--teal-line);
+  border-radius: 4px;
+  padding: 4.5mm 5mm;
+  margin-bottom: 4mm;
+}
+.culture-title {
+  font-family: var(--f-head);
+  font-weight: 800;
+  font-size: 10pt;
+  color: var(--teal);
+  margin-bottom: 2mm;
+}
+.culture p { font-size: 9.4pt; line-height: 1.55; color: var(--ink-soft); }
+
+.advice {
+  background: var(--red-tint);
+  border: 1px solid var(--red-line);
+  border-radius: 4px;
+  padding: 4.5mm 5mm;
+  margin-bottom: 4mm;
+}
+.advice-title {
+  font-family: var(--f-head);
+  font-weight: 800;
+  font-size: 10pt;
+  color: var(--red-dark);
+  margin-bottom: 2mm;
+}
+.advice p { font-size: 9.4pt; line-height: 1.55; color: var(--ink-soft); }
+
+.chain { display: flex; flex-wrap: wrap; align-items: center; gap: 4px; margin: 2.5mm 0; }
+.chip {
+  font-size: 9pt;
+  font-weight: 600;
+  background: #fff;
+  border: 1px solid var(--red-line);
+  border-radius: 100px;
+  padding: 2.4px 9px;
+}
+.chain .arrow { color: var(--red); font-weight: 700; }
+
+/* --------------------------- 17. O'z-o'zini tekshirish */
+
+.selfcheck {
+  border: 1.5px solid var(--ink);
+  border-radius: 4px;
+  padding: 4.5mm 5mm;
+}
+.selfcheck-title {
+  font-family: var(--f-head);
+  font-weight: 800;
+  font-size: 9.4pt;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  margin-bottom: 1mm;
+}
+.selfcheck-sub { font-size: 8.6pt; color: var(--muted); margin-bottom: 3mm; }
+.selfcheck-row {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  padding: 1.7mm 0;
+  border-top: 1px solid var(--rule-soft);
+  font-size: 9.4pt;
+}
+.selfcheck-row:first-of-type { border-top: none; }
+.selfcheck-box {
+  width: 4mm; height: 4mm;
+  border: 1.3px solid var(--ink);
+  border-radius: 2px;
+  flex: none;
+}
+.selfcheck-row .t { flex: 1; color: var(--ink-soft); }
+
+/* --------------- 18. Kolontitul, sahifa raqami, burchak */
+
+.running-head {
+  position: absolute;
+  top: 9mm;
+  font-family: var(--f-head);
+  font-weight: 700;
+  font-size: 7.6pt;
+  letter-spacing: .16em;
+  text-transform: uppercase;
+  color: var(--faint);
+  z-index: 3;
+}
+.right-page .running-head { right: var(--pad-out); }
+.left-page  .running-head { left: var(--pad-out); }
+
+.page-number {
+  position: absolute;
+  bottom: 8mm;
+  font-family: var(--f-head);
+  font-weight: 800;
+  font-size: 10pt;
+  color: var(--red);
+  font-variant-numeric: tabular-nums;
+  z-index: 3;
+}
+.right-page .page-number { right: var(--pad-out); }
+.left-page  .page-number { left: var(--pad-out); }
+
+.bottom-facet {
+  position: absolute;
+  bottom: 0;
+  width: 62mm;
+  height: 16mm;
+  z-index: 1;
+}
+.right-page .bottom-facet { right: 0; }
+.left-page  .bottom-facet { left: 0; }
+
+/* ------------------------------------ 19. Chop etish */
+
+@media print {
+  body { background: #fff; }
+  .controls-bar { display: none !important; }
+  .booklet-stage { display: block; padding: 0; gap: 0; }
+  .spread-wrapper { display: block; box-shadow: none; }
+  .page { box-shadow: none; margin: 0; }
+
+  @page {
+    size: 210mm 297mm;
+    margin: 0;
+  }
+
+  /* qutilar sahifa oralig'ida bo'linmasin */
+  .gram, .pron, .culture, .advice, .cando,
+  .selfcheck, .roleplay, .dlg, .ex, .model {
+    break-inside: avoid;
+    page-break-inside: avoid;
+  }
+}
+
+/* bosmaxona uchun bleed rejimi (generate_pdf.js qo'shadi) */
+body.bleed .page {
+  width: 216mm;
+  height: 303mm;
+}
+body.bleed .page.right-page { padding: 21mm 23mm 19mm 25mm; }
+body.bleed .page.left-page  { padding: 21mm 25mm 19mm 23mm; }
+
+/* ------------------- 20. Asosiy iboralar (ЗАПОМНИТЕ) ------- */
+
+.keyph {
+  border: 1.5px solid var(--red);
+  border-radius: 4px;
+  overflow: hidden;
+  margin-bottom: 4mm;
+}
+.keyph-title {
+  font-family: var(--f-head);
+  font-weight: 800;
+  font-size: 9pt;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: #fff;
+  background: var(--red);
+  padding: 2.1mm 5mm;
+}
+.keyph-sub {
+  font-size: 8.8pt;
+  color: var(--muted);
+  padding: 2.4mm 5mm 0;
+}
+.keyph-row {
+  display: flex;
+  align-items: baseline;
+  gap: 6mm;
+  padding: 1.7mm 5mm;
+  border-top: 1px solid var(--rule-soft);
+}
+.keyph-row:first-of-type { border-top: none; }
+.keyph-ru {
+  font-size: 11pt;
+  font-weight: 700;
+  width: 52%;
+  flex: none;
+}
+.keyph-uz { font-size: 9.4pt; color: var(--ink-soft); }
+
+/* --------------- 21. O'qish matni va vizitkalar ------------ */
+
+/* O'qish uchun matn — dialog emas, shuning uchun tirecha yo'q */
+.read {
+  background: #f7f8fa;
+  border-left: 3px solid var(--rule);
+  border-radius: 0 4px 4px 0;
+  padding: 4mm 5mm;
+  margin-bottom: 4mm;
+}
+.read-item {
+  display: flex;
+  gap: 4mm;
+  align-items: baseline;
+  font-size: 9.8pt;
+  line-height: 1.6;
+}
+.read-item + .read-item {
+  margin-top: 2.6mm;
+  padding-top: 2.6mm;
+  border-top: 1px solid var(--rule);
+}
+.read-n {
+  font-family: var(--f-head);
+  font-weight: 800;
+  font-size: 8.4pt;
+  color: var(--red);
+  min-width: 5mm;
+  flex: none;
+}
+
+/* Haqiqiy hujjatga o'xshash vizitkalar */
+.cards {
+  display: flex;
+  gap: 4mm;
+  margin: 2.5mm 0 4mm;
+}
+.card {
+  flex: 1;
+  border: 1px solid var(--rule);
+  border-top: 3px solid var(--red);
+  border-radius: 3px;
+  padding: 3.4mm 3.6mm 3.6mm;
+  background: #fff;
+  min-height: 26mm;
+  display: flex;
+  flex-direction: column;
+}
+.card-name {
+  font-size: 10pt;
+  font-weight: 700;
+  line-height: 1.3;
+  margin-bottom: 1.6mm;
+}
+.card-role {
+  font-size: 9pt;
+  color: var(--red-dark);
+  margin-bottom: auto;
+}
+.card-foot {
+  font-size: 8.2pt;
+  color: var(--muted);
+  padding-top: 2.5mm;
+  margin-top: 2.5mm;
+  border-top: 1px solid var(--rule-soft);
+}

@@ -1,0 +1,763 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>OSON RUS TILI — Fayoza Alisherovna (Kitob 2 Dizayni)</title>
+  <link rel="stylesheet" href="styles/booklet2.css">
+</head>
+<body>
+
+  <!-- ============================================================
+       TOP CONTROLS BAR (Screen only)
+       ============================================================ -->
+  <header class="controls-bar">
+    <div class="brand-title">
+      <span class="brand-badge">OSON RUS TILI</span>
+      <h1>Fayoza Alisherovna · A5 Format (12 Sahifa)</h1>
+    </div>
+
+    <div class="btn-group">
+      <!-- Jump to Page Select -->
+      <select id="jumpPageSelect" class="page-select" title="Sahifaga o'tish">
+        <option value="page-1">01. Old Muqova (Front Cover)</option>
+        <option value="page-2">02. Kirish (So'zboshi)</option>
+        <option value="page-3">03. Mundarija</option>
+        <option value="page-4">04. 1-dars: Tanishuv va salomlashish</option>
+        <option value="page-5">05. Muhim iboralar</option>
+        <option value="page-6">06. Grammatika: Fe'llar</option>
+        <option value="page-7">07. 5-dars: Ta'lim</option>
+        <option value="page-8">08. Suhbat uchun mavzu</option>
+        <option value="page-9">09. Lug'at (Ruscha - O'zbekcha)</option>
+        <option value="page-10">10. Motivatsiya (Orzular)</option>
+        <option value="page-11">11. Xulosa va tilaklar</option>
+        <option value="page-12">12. Orqa Muqova (Back Cover)</option>
+      </select>
+
+      <!-- Toggle View Mode -->
+      <button id="toggleSpreadBtn" class="control-btn" title="Yoyilma yoki bittalik sahifa rejimi">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="16" rx="2"/><line x1="12" y1="4" x2="12" y2="20"/></svg>
+        <span id="spreadBtnText">Yoyilma (Spreads)</span>
+      </button>
+
+      <!-- Zoom buttons -->
+      <button id="zoomOutBtn" class="control-btn" title="Kichraytirish">-</button>
+      <span id="zoomLevelText" style="font-size: 12px; color: #cbd5e1; font-weight: 600;">100%</span>
+      <button id="zoomInBtn" class="control-btn" title="Kattalashtirish">+</button>
+
+      <!-- Print / Save PDF -->
+      <button id="printBtn" class="control-btn primary" title="A5 PDF qilib saqlash">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 6 2 18 2 18 9"></polyline><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"></path><rect x="6" y="14" width="12" height="8"></rect></svg>
+        <span>PDF Saqlash / Chop Etish</span>
+      </button>
+    </div>
+  </header>
+
+
+  <!-- ============================================================
+       MAIN BOOKLET STAGE
+       ============================================================ -->
+  <main class="booklet-stage spreads-mode" id="bookletStage">
+
+    <!-- ==========================================================
+         SPREAD 1: PAGE 1 (Front Cover)
+         ========================================================== -->
+    <div class="spread-wrapper" id="spread-1">
+      <section class="page cover-page right-page" id="page-1">
+        <!-- Top Author & Title -->
+        <div class="cover-header">
+          <div class="cover-author">ФАЁЗА АЛИШЕРОВНА</div>
+          <div class="cover-title">
+            <span class="t-oson">OSON</span>
+            <span class="t-rustili">RUS TILI</span>
+          </div>
+          <div class="cover-subtitle">
+            Boshlang'ich darajadan, yuqori darajaga qadar <span class="star">⭐</span>
+          </div>
+        </div>
+
+        <!-- Cover Body with Teacher Portrait, Handwritten note & Feature Pills -->
+        <div class="cover-body">
+          <div class="cover-photo-container">
+            <img src="assets/images/cover_author.jpg" alt="Fayoza Alisherovna" loading="eager">
+          </div>
+
+          <div class="cover-handwritten">
+            <p class="handwritten">Orzularingiz<br>uchun bir qadam<br>oldinga! ♡</p>
+          </div>
+
+          <div class="cover-features">
+            <div class="feature-pill">
+              <span class="pill-icon">📖</span>
+              <span>Nazariy bilim</span>
+            </div>
+            <div class="feature-pill">
+              <span class="pill-icon">📝</span>
+              <span>Amaliy mashqlar</span>
+            </div>
+            <div class="feature-pill">
+              <span class="pill-icon">💬</span>
+              <span>Suhbatlashuv</span>
+            </div>
+            <div class="feature-pill">
+              <span class="pill-icon">🎯</span>
+              <span>100% natija</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Bottom Russian Tricolor & Bar -->
+        <div class="cover-footer">
+          <div class="russian-tricolor-ribbon"></div>
+          <div class="cover-bottom-bar">
+            Rus tili — yangi imkoniyatlar eshigi!
+          </div>
+        </div>
+      </section>
+    </div>
+
+
+    <!-- ==========================================================
+         SPREAD 2: PAGE 2 (Kirish) & PAGE 3 (Mundarija)
+         ========================================================== -->
+    <div class="spread-wrapper" id="spread-2">
+      <!-- PAGE 2: KIRISH -->
+      <section class="page left-page" id="page-2">
+        <h1 class="section-title">Kirish</h1>
+
+        <div class="kirish-content">
+          <p>Assalomu alaykum, aziz o‘quvchim!</p>
+          <p>Bu kitob siz uchun, rus tilini o‘rganishini chin dildan istaganlar uchun yozilgan.</p>
+          <p>Men — <strong>Фаёза Алишеровна</strong>, 10 yillik tajribaga ega rus tili ustoziman. Ushbu qo‘llanmada siz nafaqat grammatikani, balki hayotda kerak bo‘ladigan amaliy tilni ham o‘rganasiz.</p>
+          <p>Kitobning maqsadi — sizni 0 dan boshlab, erkin muloqot darajasigacha olib chiqish.</p>
+
+          <div>
+            <p><strong>Har bir darsda:</strong></p>
+            <ul class="kirish-list">
+              <li>yangi so‘zlar</li>
+              <li>grammatik tushuntirish</li>
+              <li>amaliy mashqlar</li>
+              <li>suhbat va matnlar</li>
+            </ul>
+            <p style="margin-top: 1.5mm;">bor.</p>
+          </div>
+
+          <p>Siz bunga albatta erishasiz! Men sizga ishonaman!</p>
+
+          <div class="kirish-signature handwritten">
+            Фаёза Алишеровна ♡
+          </div>
+        </div>
+
+        <!-- Faint Kremlin Sketch Background -->
+        <img src="assets/images/kremlin_sketch.svg" class="kirish-sketch-bg" alt="Kremlin Sketch">
+
+        <!-- Callout Box -->
+        <div class="callout-box">
+          <strong>Eslatma:</strong> Kitobdagi barcha matnlar, mashqlar va misollar sizning o‘qish va yozish ko‘nikmalaringizni oshirish uchun mo‘ljallangan.
+        </div>
+
+        <div class="page-num">02</div>
+      </section>
+
+      <!-- PAGE 3: MUNDARIJA -->
+      <section class="page right-page" id="page-3">
+        <h1 class="section-title" style="justify-content: center;">Mundarija</h1>
+
+        <div class="toc-list">
+          <div class="toc-item">
+            <span class="toc-badge">1</span>
+            <span class="toc-name">1-dars. Tanishuv va salomlashish</span>
+            <span class="toc-leader"></span>
+            <span class="toc-page">5</span>
+          </div>
+          <div class="toc-item">
+            <span class="toc-badge">2</span>
+            <span class="toc-name">2-dars. Oila va yaqinlar</span>
+            <span class="toc-leader"></span>
+            <span class="toc-page">10</span>
+          </div>
+          <div class="toc-item">
+            <span class="toc-badge">3</span>
+            <span class="toc-name">3-dars. Kundalik hayot</span>
+            <span class="toc-leader"></span>
+            <span class="toc-page">15</span>
+          </div>
+          <div class="toc-item">
+            <span class="toc-badge">4</span>
+            <span class="toc-name">4-dars. Uy va kvartira</span>
+            <span class="toc-leader"></span>
+            <span class="toc-page">20</span>
+          </div>
+          <div class="toc-item">
+            <span class="toc-badge">5</span>
+            <span class="toc-name">5-dars. Ta'lim</span>
+            <span class="toc-leader"></span>
+            <span class="toc-page">25</span>
+          </div>
+          <div class="toc-item">
+            <span class="toc-badge">6</span>
+            <span class="toc-name">6-dars. Ish va kasb</span>
+            <span class="toc-leader"></span>
+            <span class="toc-page">30</span>
+          </div>
+          <div class="toc-item">
+            <span class="toc-badge">7</span>
+            <span class="toc-name">7-dars. Sayohat va transport</span>
+            <span class="toc-leader"></span>
+            <span class="toc-page">35</span>
+          </div>
+          <div class="toc-item">
+            <span class="toc-badge">8</span>
+            <span class="toc-name">8-dars. Oziq-ovqat va restoran</span>
+            <span class="toc-leader"></span>
+            <span class="toc-page">40</span>
+          </div>
+          <div class="toc-item">
+            <span class="toc-badge">9</span>
+            <span class="toc-name">9-dars. Savdo va xarid</span>
+            <span class="toc-leader"></span>
+            <span class="toc-page">45</span>
+          </div>
+          <div class="toc-item">
+            <span class="toc-badge">10</span>
+            <span class="toc-name">10-dars. Tabiat va ob-havo</span>
+            <span class="toc-leader"></span>
+            <span class="toc-page">50</span>
+          </div>
+          <div class="toc-item">
+            <span class="toc-badge">11</span>
+            <span class="toc-name">11-dars. Sog'liq va shifokor</span>
+            <span class="toc-leader"></span>
+            <span class="toc-page">55</span>
+          </div>
+          <div class="toc-item">
+            <span class="toc-badge">12</span>
+            <span class="toc-name">12-dars. Rejalar va orzular</span>
+            <span class="toc-leader"></span>
+            <span class="toc-page">60</span>
+          </div>
+        </div>
+
+        <div class="toc-extra">
+          <div class="toc-extra-item">
+            <span>Qo'shimcha: Muhim iboralar</span>
+            <span class="toc-leader"></span>
+            <span class="toc-page">65</span>
+          </div>
+          <div class="toc-extra-item">
+            <span>Ruscha-o'zbekcha lug'at</span>
+            <span class="toc-leader"></span>
+            <span class="toc-page">72</span>
+          </div>
+        </div>
+
+        <!-- Bottom Sketch & Motivational text -->
+        <div class="toc-bottom-row">
+          <img src="assets/images/kremlin_sketch.svg" class="toc-sketch" alt="Kremlin Spire">
+          <div class="toc-handwritten handwritten">
+            Вперёд!<br>У вас всё получится! ♡
+          </div>
+        </div>
+
+        <div class="page-num">03</div>
+      </section>
+    </div>
+
+
+    <!-- ==========================================================
+         SPREAD 3: PAGE 4 (1-dars) & PAGE 5 (Muhim iboralar)
+         ========================================================== -->
+    <div class="spread-wrapper" id="spread-3">
+      <!-- PAGE 4: 1-DARS -->
+      <section class="page left-page" id="page-4">
+        <!-- Top Bar with Badge, Title and Mini Photo -->
+        <div class="lesson-top-bar">
+          <div class="lesson-title-block">
+            <span class="lesson-badge">1-dars</span>
+            <h2 class="lesson-title">Tanishuv va salomlashish</h2>
+          </div>
+          <div class="lesson-top-img">
+            <img src="assets/images/kremlin_small.jpg" alt="Moskva Kreml">
+          </div>
+        </div>
+
+        <!-- Section: Yangi so'zlar -->
+        <div class="sub-header">Yangi so'zlar:</div>
+        <div class="vocab-grid">
+          <div class="vocab-row"><span class="vocab-ru">мен</span><span class="vocab-dash">–</span><span class="vocab-uz">men</span></div>
+          <div class="vocab-row"><span class="vocab-ru">здравствуйте</span><span class="vocab-dash">–</span><span class="vocab-uz">salom (rasmiy)</span></div>
+          <div class="vocab-row"><span class="vocab-ru">ты</span><span class="vocab-dash">–</span><span class="vocab-uz">sen</span></div>
+          <div class="vocab-row"><span class="vocab-ru">привет</span><span class="vocab-dash">–</span><span class="vocab-uz">salom (norasmiy)</span></div>
+          <div class="vocab-row"><span class="vocab-ru">он</span><span class="vocab-dash">–</span><span class="vocab-uz">u (erkak)</span></div>
+          <div class="vocab-row"><span class="vocab-ru">как дела?</span><span class="vocab-dash">–</span><span class="vocab-uz">ahvoling qanday?</span></div>
+          <div class="vocab-row"><span class="vocab-ru">она</span><span class="vocab-dash">–</span><span class="vocab-uz">u (ayol)</span></div>
+          <div class="vocab-row"><span class="vocab-ru">хорошо</span><span class="vocab-dash">–</span><span class="vocab-uz">yaxshi</span></div>
+          <div class="vocab-row"><span class="vocab-ru">мы</span><span class="vocab-dash">–</span><span class="vocab-uz">biz</span></div>
+          <div class="vocab-row"><span class="vocab-ru">плохо</span><span class="vocab-dash">–</span><span class="vocab-uz">yomon</span></div>
+          <div class="vocab-row"><span class="vocab-ru">вы</span><span class="vocab-dash">–</span><span class="vocab-uz">siz</span></div>
+          <div class="vocab-row"><span class="vocab-ru">спасибо</span><span class="vocab-dash">–</span><span class="vocab-uz">rahmat</span></div>
+          <div class="vocab-row"><span class="vocab-ru">они</span><span class="vocab-dash">–</span><span class="vocab-uz">ular</span></div>
+          <div class="vocab-row"><span class="vocab-ru">пожалуйста</span><span class="vocab-dash">–</span><span class="vocab-uz">iltimos</span></div>
+        </div>
+
+        <!-- Dialog Card -->
+        <div class="dialog-card">
+          <div class="dialog-card-title">
+            <span>💬</span>
+            <span>Avval o'qib ko'ring:</span>
+          </div>
+          <div class="dialog-lines">
+            <div class="dialog-line">— Здравствуйте! Как вас зовут?</div>
+            <div class="dialog-line">— Меня зовут Фаёза.</div>
+            <div class="dialog-line">— Очень приятно!</div>
+            <div class="dialog-line">— Взаимно!</div>
+          </div>
+        </div>
+
+        <!-- Exercise 1 -->
+        <div class="exercise-block">
+          <div class="exercise-title">Mashq 1. Tarjima qiling va yod oling.</div>
+          <div class="exercise-list">
+            <div class="exercise-item">
+              <span class="q-uz">1. Sizning ismingiz nima?</span>
+              <span class="vocab-dash">—</span>
+              <span class="ans-ru">Меня зовут</span>
+              <span class="write-line"></span>
+            </div>
+            <div class="exercise-item">
+              <span class="q-uz">2. Siz qayerdansiz?</span>
+              <span class="vocab-dash">—</span>
+              <span class="ans-ru">Я из</span>
+              <span class="write-line"></span>
+            </div>
+            <div class="exercise-item">
+              <span class="q-uz">3. Siz necha yoshdasiz?</span>
+              <span class="vocab-dash">—</span>
+              <span class="ans-ru">Мне</span>
+              <span class="write-line" style="min-width: 25px;"></span>
+              <span class="ans-ru">лет.</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="page-num">08</div>
+      </section>
+
+      <!-- PAGE 5: MUHIM IBORALAR -->
+      <section class="page right-page" id="page-5">
+        <div class="section-header-icon">
+          <div class="icon-circle">💬</div>
+          <h2 class="section-title" style="margin-bottom: 0;">Muhim iboralar</h2>
+        </div>
+
+        <table class="phrases-table">
+          <tr>
+            <td class="col-ru">Какой у вас номер телефона?</td>
+            <td class="col-dash">—</td>
+            <td class="col-uz">Sizning telefon raqamingiz bormi?</td>
+          </tr>
+          <tr>
+            <td class="col-ru">Мне нравится …</td>
+            <td class="col-dash">—</td>
+            <td class="col-uz">Menga … yoqadi.</td>
+          </tr>
+          <tr>
+            <td class="col-ru">Я не понимаю.</td>
+            <td class="col-dash">—</td>
+            <td class="col-uz">Men tushunmayapman.</td>
+          </tr>
+          <tr>
+            <td class="col-ru">Повторите, пожалуйста.</td>
+            <td class="col-dash">—</td>
+            <td class="col-uz">Iltimos, takrorlang.</td>
+          </tr>
+          <tr>
+            <td class="col-ru">Где находится …?</td>
+            <td class="col-dash">—</td>
+            <td class="col-uz">… qayerda?</td>
+          </tr>
+          <tr>
+            <td class="col-ru">Сколько это стоит?</td>
+            <td class="col-dash">—</td>
+            <td class="col-uz">Bu qancha turadi?</td>
+          </tr>
+          <tr>
+            <td class="col-ru">Я хочу …</td>
+            <td class="col-dash">—</td>
+            <td class="col-uz">Men … xohlayman.</td>
+          </tr>
+          <tr>
+            <td class="col-ru">Можно мне …?</td>
+            <td class="col-dash">—</td>
+            <td class="col-uz">Menga … mumkinmi?</td>
+          </tr>
+        </table>
+
+        <!-- Bottom Split with Cursive Quote & Study Coffee Photo -->
+        <div class="phrases-bottom-split">
+          <div class="phrases-quote handwritten">
+            Har kuni<br>yangi so'z! ♡
+          </div>
+          <div class="phrases-img">
+            <img src="assets/images/study_coffee.jpg" alt="Kofe va daftar">
+          </div>
+        </div>
+
+        <div class="page-num">08</div>
+      </section>
+    </div>
+
+
+    <!-- ==========================================================
+         SPREAD 4: PAGE 6 (Grammatika) & PAGE 7 (5-dars: Ta'lim)
+         ========================================================== -->
+    <div class="spread-wrapper" id="spread-4">
+      <!-- PAGE 6: GRAMMATIKA -->
+      <section class="page left-page" id="page-6">
+        <div class="section-header-icon">
+          <div class="icon-circle">📖</div>
+          <h2 class="section-title" style="margin-bottom: 0;">Grammatika</h2>
+        </div>
+
+        <div class="grammar-block">
+          <div style="font-family: var(--font-heading); font-size: 13px; font-weight: 800; color: var(--c-navy-dark);">
+            Fe'llar (глаголы)
+          </div>
+
+          <div>
+            <div style="font-size: 11px; font-weight: 700; color: var(--c-navy); margin-bottom: 1.5mm;">
+              1. Hozirgi zamon (Настоящее время)
+            </div>
+            <p class="grammar-sub">
+              Rus tilida hozirgi zamon fe'llari shaxsga qarab o'zgaradi.
+            </p>
+          </div>
+
+          <!-- Conjugation Table -->
+          <table class="grammar-table">
+            <thead>
+              <tr>
+                <th>Shaxs</th>
+                <th>Men<br>(я)</th>
+                <th>Sen<br>(ты)</th>
+                <th>U<br>(он/она)</th>
+                <th>Biz<br>(мы)</th>
+                <th>Siz<br>(вы)</th>
+                <th>Ular<br>(они)</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>yozamiz<br><span style="color: #64748b; font-weight: normal;">(писать)</span></td>
+                <td>пишу</td>
+                <td>пишешь</td>
+                <td>пишет</td>
+                <td>пишем</td>
+                <td>пишете</td>
+                <td>пишут</td>
+              </tr>
+              <tr>
+                <td>o'qiymiz<br><span style="color: #64748b; font-weight: normal;">(читать)</span></td>
+                <td>читаю</td>
+                <td>читаешь</td>
+                <td>читает</td>
+                <td>читаем</td>
+                <td>читаете</td>
+                <td>читают</td>
+              </tr>
+            </tbody>
+          </table>
+
+          <!-- Section 2 -->
+          <div>
+            <div style="font-size: 11px; font-weight: 700; color: var(--c-navy); margin-bottom: 1.5mm;">
+              2. Fe'llarning shaxsli shakllari
+            </div>
+            <div class="grammar-shaxs-list">
+              <div>• <strong>Я</strong> – men (1-shaxs)</div>
+              <div>• <strong>Ты</strong> – sen (2-shaxs)</div>
+              <div>• <strong>Он, она, оно</strong> – u (3-shaxs, erkak/ayol/narsa)</div>
+              <div>• <strong>Мы</strong> – biz (1-shaxs ko'plik)</div>
+              <div>• <strong>Вы</strong> – siz (2-shaxs ko'plik)</div>
+              <div>• <strong>Они</strong> – ular (3-shaxs ko'plik)</div>
+            </div>
+          </div>
+
+          <!-- Yellow Eslatma Box -->
+          <div class="note-yellow">
+            <strong>Eslatma:</strong> Fe'lning oxiri har doim shaxsga qarab o‘zgaradi, shuning uchun diqqat bilan yodlang!
+          </div>
+        </div>
+
+        <div class="page-num">18</div>
+      </section>
+
+      <!-- PAGE 7: 5-DARS: TA'LIM -->
+      <section class="page right-page" id="page-7">
+        <div class="lesson-top-bar">
+          <div class="lesson-title-block">
+            <span class="lesson-badge">5-dars</span>
+            <h2 class="lesson-title">Ta'lim</h2>
+          </div>
+          <div class="lesson-top-img">
+            <img src="assets/images/mgu_university.jpg" alt="MGU Universiteti">
+          </div>
+        </div>
+
+        <div class="sub-header">Yangi so'zlar:</div>
+        <div class="vocab-grid">
+          <div class="vocab-row"><span class="vocab-ru">учитель</span><span class="vocab-dash">–</span><span class="vocab-uz">o'qituvchi</span></div>
+          <div class="vocab-row"><span class="vocab-ru">учиться</span><span class="vocab-dash">–</span><span class="vocab-uz">o'qish</span></div>
+          <div class="vocab-row"><span class="vocab-ru">студент</span><span class="vocab-dash">–</span><span class="vocab-uz">talaba</span></div>
+          <div class="vocab-row"><span class="vocab-ru">учить</span><span class="vocab-dash">–</span><span class="vocab-uz">o'qitmoq</span></div>
+          <div class="vocab-row"><span class="vocab-ru">университет</span><span class="vocab-dash">–</span><span class="vocab-uz">universitet</span></div>
+          <div class="vocab-row"><span class="vocab-ru">понимать</span><span class="vocab-dash">–</span><span class="vocab-uz">tushunmoq</span></div>
+          <div class="vocab-row"><span class="vocab-ru">урок</span><span class="vocab-dash">–</span><span class="vocab-uz">dars</span></div>
+          <div class="vocab-row"><span class="vocab-ru">знать</span><span class="vocab-dash">–</span><span class="vocab-uz">bilmoq</span></div>
+          <div class="vocab-row"><span class="vocab-ru">книга</span><span class="vocab-dash">–</span><span class="vocab-uz">kitob</span></div>
+          <div class="vocab-row"><span class="vocab-ru">сдавать</span><span class="vocab-dash">–</span><span class="vocab-uz">topshirmoq</span></div>
+          <div class="vocab-row"><span class="vocab-ru">знание</span><span class="vocab-dash">–</span><span class="vocab-uz">bilim</span></div>
+          <div class="vocab-row"><span class="vocab-ru">профессия</span><span class="vocab-dash">–</span><span class="vocab-uz">kasb</span></div>
+          <div class="vocab-row"><span class="vocab-ru">экзамен</span><span class="vocab-dash">–</span><span class="vocab-uz">imtihon</span></div>
+          <div class="vocab-row"><span class="vocab-ru">будущее</span><span class="vocab-dash">–</span><span class="vocab-uz">kelajak</span></div>
+        </div>
+
+        <!-- Reading & Translation Exercise -->
+        <div class="dialog-card" style="margin-top: 2mm;">
+          <div class="dialog-card-title">
+            <span>📝</span>
+            <span>Mashq 1. Matnni o'qing va tarjima qiling.</span>
+          </div>
+          <p style="font-size: 11px; line-height: 1.6; color: #1e293b; text-align: justify;">
+            Я студентка. Я учусь в университете. Мне нравится русский язык. Я хочу стать хорошим специалистом. Сейчас я готовлюсь к экзаменам. Учиться трудно, но я верю, что у меня всё получится.
+          </p>
+        </div>
+
+        <div class="page-num">25</div>
+      </section>
+    </div>
+
+
+    <!-- ==========================================================
+         SPREAD 5: PAGE 8 (Suhbat mavzusi) & PAGE 9 (Lug'at)
+         ========================================================== -->
+    <div class="spread-wrapper" id="spread-5">
+      <!-- PAGE 8: SUHBAT UCHUN MAVZU -->
+      <section class="page left-page" id="page-8">
+        <div class="section-header-icon">
+          <div class="icon-circle">💬</div>
+          <h2 class="section-title" style="margin-bottom: 0;">Suhbat uchun mavzu</h2>
+        </div>
+
+        <div style="font-size: 12px; font-weight: 700; color: var(--c-navy); margin-top: 1mm;">
+          O'z orzularingizni ayting.
+        </div>
+
+        <div class="suhbat-questions">
+          <div>• Какую профессию вы хотите выбрать?</div>
+          <div>• Где вы будете учиться?</div>
+          <div>• Что вы будете делать в будущем?</div>
+        </div>
+
+        <!-- Photo & Floating Cursive Banner -->
+        <div class="suhbat-split">
+          <img src="assets/images/city_dreams.jpg" alt="Shahar orzulari">
+          <div class="suhbat-quote-floating handwritten">
+            Katta orzular katta mehnatni talab qiladi! ♡
+          </div>
+        </div>
+
+        <div class="page-num">63</div>
+      </section>
+
+      <!-- PAGE 9: LUG'AT -->
+      <section class="page right-page" id="page-9">
+        <div class="section-header-icon">
+          <div class="icon-circle">📖</div>
+          <h2 class="section-title" style="margin-bottom: 0;">Lug'at</h2>
+        </div>
+
+        <div class="vocab-grid" style="grid-template-columns: 1fr 1fr; margin-top: 2mm; gap: 2.2mm 4mm; font-size: 11px;">
+          <div class="vocab-row"><span class="vocab-ru">друг</span><span class="vocab-dash">–</span><span class="vocab-uz">do'st</span></div>
+          <div class="vocab-row"><span class="vocab-ru">город</span><span class="vocab-dash">–</span><span class="vocab-uz">shahar</span></div>
+          <div class="vocab-row"><span class="vocab-ru">время</span><span class="vocab-dash">–</span><span class="vocab-uz">vaqt</span></div>
+          <div class="vocab-row"><span class="vocab-ru">дом</span><span class="vocab-dash">–</span><span class="vocab-uz">uy</span></div>
+          <div class="vocab-row"><span class="vocab-ru">работа</span><span class="vocab-dash">–</span><span class="vocab-uz">ish</span></div>
+          <div class="vocab-row"><span class="vocab-ru">машина</span><span class="vocab-dash">–</span><span class="vocab-uz">mashina</span></div>
+          <div class="vocab-row"><span class="vocab-ru">жизнь</span><span class="vocab-dash">–</span><span class="vocab-uz">hayot</span></div>
+          <div class="vocab-row"><span class="vocab-ru">путешествие</span><span class="vocab-dash">–</span><span class="vocab-uz">sayohat</span></div>
+          <div class="vocab-row"><span class="vocab-ru">мечта</span><span class="vocab-dash">–</span><span class="vocab-uz">orzu</span></div>
+          <div class="vocab-row"><span class="vocab-ru">погода</span><span class="vocab-dash">–</span><span class="vocab-uz">ob-havo</span></div>
+          <div class="vocab-row"><span class="vocab-ru">счастье</span><span class="vocab-dash">–</span><span class="vocab-uz">baxt</span></div>
+          <div class="vocab-row"><span class="vocab-ru">день</span><span class="vocab-dash">–</span><span class="vocab-uz">kun</span></div>
+          <div class="vocab-row"><span class="vocab-ru">семья</span><span class="vocab-dash">–</span><span class="vocab-uz">oila</span></div>
+          <div class="vocab-row"><span class="vocab-ru">ночь</span><span class="vocab-dash">–</span><span class="vocab-uz">tun</span></div>
+          <div class="vocab-row"><span class="vocab-ru">любовь</span><span class="vocab-dash">–</span><span class="vocab-uz">sevgi</span></div>
+          <div class="vocab-row"><span class="vocab-ru">завтра</span><span class="vocab-dash">–</span><span class="vocab-uz">ertaga</span></div>
+          <div class="vocab-row"><span class="vocab-ru">красота</span><span class="vocab-dash">–</span><span class="vocab-uz">go'zallik</span></div>
+          <div class="vocab-row"><span class="vocab-ru">сегодня</span><span class="vocab-dash">–</span><span class="vocab-uz">bugun</span></div>
+        </div>
+
+        <div style="margin-top: auto; padding-top: 4mm; text-align: center;">
+          <div class="handwritten" style="font-size: 23px; color: var(--c-navy);">
+            Yangi so'z — yangi imkoniyat! ♡
+          </div>
+        </div>
+
+        <div class="page-num">70</div>
+      </section>
+    </div>
+
+
+    <!-- ==========================================================
+         SPREAD 6: PAGE 10 (Motivatsiya) & PAGE 11 (Xulosa va tilaklar)
+         ========================================================== -->
+    <div class="spread-wrapper" id="spread-6">
+      <!-- PAGE 10: MOTIVATSIYA -->
+      <section class="page left-page" id="page-10">
+        <!-- Top Sky Blue Card -->
+        <div class="motiv-card">
+          <h2 class="handwritten">«O'rganish hech qachon kech emas!»</h2>
+          <p class="handwritten">Siz qila olasiz! ♡</p>
+        </div>
+
+        <!-- Photo with Kremlin & Books -->
+        <div class="motiv-img-box">
+          <img src="assets/images/red_square_books.jpg" alt="Kitoblar va Moskva daryosi">
+        </div>
+
+        <div class="page-num">71</div>
+      </section>
+
+      <!-- PAGE 11: XULOSA VA TILAKLAR -->
+      <section class="page right-page xulosa-page" id="page-11">
+        <p class="xulosa-text-top">
+          Siz bu kitobni o‘qishingiz bilan o‘z orzularingizga bir qadam yaqinlashdingiz.
+        </p>
+
+        <div>
+          <div class="xulosa-hand-title handwritten">
+            Sizga omad tilayman!
+          </div>
+          <div class="xulosa-signature handwritten">
+            Фаёза Алишеровна ♡
+          </div>
+        </div>
+
+        <!-- Bouquet of White Tulips -->
+        <div class="xulosa-tulips">
+          <img src="assets/images/white_tulips.jpg" alt="Oq lola guldastasi">
+        </div>
+
+        <!-- 3 Values Pills -->
+        <div class="xulosa-pills">
+          <span>O'rganing</span>
+          <span>Ishoning</span>
+          <span>Erishing</span>
+        </div>
+
+        <div class="page-num">72</div>
+      </section>
+    </div>
+
+
+    <!-- ==========================================================
+         SPREAD 7: PAGE 12 (Back Cover)
+         ========================================================== -->
+    <div class="spread-wrapper" id="spread-7">
+      <section class="page back-cover-page right-page" id="page-12">
+        <div class="back-cover-top">
+          <div class="back-slogan handwritten">
+            Rus tili —<br>yangi imkoniyatlar<br>eshigi! ♡
+          </div>
+          <div class="back-author">
+            ФАЁЗА АЛИШЕРОВНА
+          </div>
+        </div>
+
+        <!-- Author Photo in Blue Blazer -->
+        <div class="back-author-photo">
+          <img src="assets/images/cover_author.jpg" alt="Fayoza Alisherovna">
+        </div>
+
+        <!-- Bottom Barcode -->
+        <div class="back-cover-bottom">
+          <div class="barcode-box">
+            <img src="assets/images/barcode.svg" alt="ISBN Barcode">
+          </div>
+        </div>
+      </section>
+    </div>
+
+  </main>
+
+
+  <!-- ============================================================
+       INTERACTIVE CONTROLS JAVASCRIPT
+       ============================================================ -->
+  <script>
+    (function() {
+      const stage = document.getElementById('bookletStage');
+      const toggleSpreadBtn = document.getElementById('toggleSpreadBtn');
+      const spreadBtnText = document.getElementById('spreadBtnText');
+      const jumpSelect = document.getElementById('jumpPageSelect');
+      const zoomInBtn = document.getElementById('zoomInBtn');
+      const zoomOutBtn = document.getElementById('zoomOutBtn');
+      const zoomLevelText = document.getElementById('zoomLevelText');
+      const printBtn = document.getElementById('printBtn');
+
+      let currentZoom = 100;
+      let isSpreads = true;
+
+      // 1. Spreads / Single mode toggle
+      toggleSpreadBtn.addEventListener('click', function() {
+        isSpreads = !isSpreads;
+        if (isSpreads) {
+          stage.classList.remove('single-mode');
+          stage.classList.add('spreads-mode');
+          spreadBtnText.textContent = 'Yoyilma (Spreads)';
+        } else {
+          stage.classList.remove('spreads-mode');
+          stage.classList.add('single-mode');
+          spreadBtnText.textContent = 'Bittalik (Single)';
+        }
+      });
+
+      // 2. Zoom Controls
+      function updateZoom() {
+        stage.style.transform = `scale(${currentZoom / 100})`;
+        stage.style.transformOrigin = 'top center';
+        zoomLevelText.textContent = `${currentZoom}%`;
+      }
+
+      zoomInBtn.addEventListener('click', function() {
+        if (currentZoom < 160) {
+          currentZoom += 10;
+          updateZoom();
+        }
+      });
+
+      zoomOutBtn.addEventListener('click', function() {
+        if (currentZoom > 50) {
+          currentZoom -= 10;
+          updateZoom();
+        }
+      });
+
+      // 3. Jump to Page
+      jumpSelect.addEventListener('change', function() {
+        const targetPage = document.getElementById(this.value);
+        if (targetPage) {
+          targetPage.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        }
+      });
+
+      // 4. Print / PDF Save
+      printBtn.addEventListener('click', function() {
+        window.print();
+      });
+    })();
+  </script>
+</body>
+</html>

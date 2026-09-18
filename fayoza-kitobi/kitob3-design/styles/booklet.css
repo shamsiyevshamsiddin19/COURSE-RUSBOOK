@@ -1,0 +1,1193 @@
+@import url('https://fonts.googleapis.com/css2?family=Caveat:wght@500;600;700&family=Inter:wght@300;400;500;600;700&family=Montserrat:wght@400;500;600;700;800;900&display=swap');
+
+:root {
+  /* Brand Palette from Reference */
+  --c-navy: #162f65;
+  --c-navy-dark: #0f2042;
+  --c-blue: #1d4ed8;
+  --c-blue-light: #2563eb;
+  --c-red: #e11d48;
+  --c-red-dark: #be123c;
+  --c-red-flag: #d9252c;
+  --c-card-blue: #f0f7ff;
+  --c-card-blue-border: #bae6fd;
+  --c-card-blue-text: #0369a1;
+  --c-card-yellow: #fef9c3;
+  --c-card-yellow-border: #fde047;
+  --c-card-yellow-text: #854d0e;
+  
+  --c-text-main: #1e293b;
+  --c-text-muted: #64748b;
+  --c-text-light: #94a3b8;
+  --c-border: #e2e8f0;
+  
+  /* Fonts */
+  --font-heading: 'Montserrat', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-body: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-hand: 'Caveat', cursive, sans-serif;
+  
+  /* Geometry (A5 format: 148mm x 210mm) */
+  --page-w: 148mm;
+  --page-h: 210mm;
+}
+
+/* Reset */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-color: #cbd5e1;
+  font-family: var(--font-body);
+  color: var(--c-text-main);
+  -webkit-font-smoothing: antialiased;
+  padding-top: 60px;
+  min-height: 100vh;
+}
+
+/* ============================================================
+   TOP FLOATING CONTROLS (Screen only)
+   ============================================================ */
+.controls-bar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 56px;
+  background: #0f172a;
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 20px;
+  z-index: 9999;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.3);
+}
+
+.controls-bar .brand-title {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.controls-bar .brand-badge {
+  background: var(--c-red);
+  color: #fff;
+  font-family: var(--font-heading);
+  font-size: 11px;
+  font-weight: 800;
+  padding: 4px 10px;
+  border-radius: 6px;
+  letter-spacing: 0.5px;
+}
+
+.controls-bar h1 {
+  font-family: var(--font-heading);
+  font-size: 15px;
+  font-weight: 700;
+  letter-spacing: 0.3px;
+  color: #f8fafc;
+}
+
+.controls-bar .btn-group {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.control-btn {
+  background: #1e293b;
+  border: 1px solid #334155;
+  color: #f1f5f9;
+  padding: 6px 14px;
+  border-radius: 6px;
+  font-family: var(--font-body);
+  font-size: 13px;
+  font-weight: 500;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  transition: all 0.15s ease;
+}
+
+.control-btn:hover {
+  background: #334155;
+  border-color: #475569;
+}
+
+.control-btn.primary {
+  background: var(--c-blue);
+  border-color: var(--c-blue);
+  color: #ffffff;
+  font-weight: 600;
+}
+
+.control-btn.primary:hover {
+  background: var(--c-blue-light);
+}
+
+.page-select {
+  background: #1e293b;
+  border: 1px solid #334155;
+  color: #f1f5f9;
+  padding: 6px 12px;
+  border-radius: 6px;
+  font-family: var(--font-body);
+  font-size: 13px;
+  outline: none;
+  cursor: pointer;
+}
+
+/* ============================================================
+   BOOKLET STAGE
+   ============================================================ */
+.booklet-stage {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 30px 10px 80px;
+  gap: 36px;
+}
+
+/* SPREADS (2 Pages side by side) */
+.spreads-mode .spread-wrapper {
+  display: flex;
+  box-shadow: 0 16px 36px rgba(15, 23, 42, 0.25);
+  border-radius: 3px;
+  background: #ffffff;
+  position: relative;
+}
+
+.single-mode .spread-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  background: transparent;
+  box-shadow: none;
+}
+
+.single-mode .page {
+  box-shadow: 0 12px 30px rgba(15, 23, 42, 0.18);
+  border-radius: 3px;
+}
+
+/* ============================================================
+   PAGE BASE (A5 148mm x 210mm)
+   ============================================================ */
+.page {
+  width: var(--page-w);
+  height: var(--page-h);
+  background: #ffffff;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  padding: 14mm 14mm 12mm 14mm;
+  flex-shrink: 0;
+  box-sizing: border-box;
+}
+
+.left-page {
+  border-right: 1px solid rgba(0,0,0,0.06);
+}
+
+.right-page {
+  border-left: 1px solid rgba(0,0,0,0.06);
+}
+
+/* Inner book spine shadow effect in spread mode */
+.spreads-mode .left-page::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 14px;
+  height: 100%;
+  background: linear-gradient(to left, rgba(0,0,0,0.07), transparent);
+  pointer-events: none;
+}
+
+.spreads-mode .right-page::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 14px;
+  height: 100%;
+  background: linear-gradient(to right, rgba(0,0,0,0.07), transparent);
+  pointer-events: none;
+}
+
+/* Page Numbers */
+.page-num {
+  position: absolute;
+  bottom: 8mm;
+  font-family: var(--font-body);
+  font-size: 11px;
+  font-weight: 600;
+  color: #94a3b8;
+}
+
+.left-page .page-num {
+  left: 14mm;
+}
+
+.right-page .page-num {
+  right: 14mm;
+}
+
+/* Handwritten Calligraphy Style */
+.handwritten {
+  font-family: var(--font-hand);
+  color: var(--c-navy);
+  font-weight: 700;
+  line-height: 1.15;
+}
+
+/* ============================================================
+   1. FRONT COVER (Sahifa 1)
+   ============================================================ */
+.cover-page {
+  padding: 0;
+  background: #ffffff;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  position: relative;
+}
+
+.cover-header {
+  padding: 10mm 12mm 0;
+  text-align: center;
+}
+
+.cover-author {
+  font-family: var(--font-heading);
+  font-size: 13px;
+  font-weight: 800;
+  letter-spacing: 2px;
+  color: var(--c-navy-dark);
+  text-transform: uppercase;
+  margin-bottom: 3mm;
+}
+
+.cover-title {
+  font-family: var(--font-heading);
+  font-size: 38px;
+  font-weight: 900;
+  line-height: 0.95;
+  letter-spacing: -0.5px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+}
+
+.cover-title .t-oson {
+  color: var(--c-navy);
+  letter-spacing: 1px;
+}
+
+.cover-title .t-rustili {
+  color: var(--c-red);
+  letter-spacing: 0.5px;
+}
+
+.cover-subtitle {
+  font-family: var(--font-body);
+  font-size: 11.5px;
+  font-weight: 600;
+  color: var(--c-text-main);
+  margin-top: 3mm;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+}
+
+.cover-subtitle .star {
+  color: #f59e0b;
+}
+
+/* Cover Body (Photo & Features) */
+.cover-body {
+  position: relative;
+  flex: 1;
+  margin-top: 4mm;
+  display: flex;
+  align-items: flex-end;
+}
+
+.cover-photo-container {
+  position: absolute;
+  left: 0;
+  bottom: 12mm;
+  width: 68%;
+  height: 85%;
+  overflow: hidden;
+  z-index: 1;
+}
+
+.cover-photo-container img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top center;
+  border-top-right-radius: 24px;
+}
+
+.cover-handwritten {
+  position: absolute;
+  top: 10%;
+  right: 10mm;
+  width: 42%;
+  z-index: 3;
+  text-align: center;
+  transform: rotate(-3deg);
+}
+
+.cover-handwritten p {
+  font-size: 21px;
+  line-height: 1.15;
+  color: var(--c-navy);
+}
+
+.cover-features {
+  position: absolute;
+  right: 8mm;
+  bottom: 16mm;
+  display: flex;
+  flex-direction: column;
+  gap: 2.5mm;
+  z-index: 4;
+}
+
+.feature-pill {
+  background: #ffffff;
+  box-shadow: 0 4px 12px rgba(15, 23, 42, 0.12);
+  border: 1px solid #e2e8f0;
+  border-radius: 20px;
+  padding: 5px 12px 5px 8px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-body);
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--c-navy);
+}
+
+.feature-pill .pill-icon {
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: var(--c-card-blue);
+  color: var(--c-blue);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+}
+
+/* Tricolor Ribbon & Bottom Banner */
+.cover-footer {
+  position: relative;
+  z-index: 5;
+  width: 100%;
+}
+
+.russian-tricolor-ribbon {
+  height: 14px;
+  width: 100%;
+  background: linear-gradient(180deg, 
+    #ffffff 0%, #ffffff 33.3%, 
+    #0039a6 33.3%, #0039a6 66.6%, 
+    #d52b1e 66.6%, #d52b1e 100%);
+  clip-path: polygon(0 0, 100% 40%, 100% 100%, 0% 100%);
+}
+
+.cover-bottom-bar {
+  background: var(--c-navy);
+  color: #ffffff;
+  padding: 3.5mm 6mm;
+  font-family: var(--font-body);
+  font-size: 12px;
+  font-weight: 600;
+  text-align: center;
+  letter-spacing: 0.3px;
+}
+
+/* ============================================================
+   2. KIRISH SAHIFASI (Sahifa 2)
+   ============================================================ */
+.section-title {
+  font-family: var(--font-heading);
+  font-size: 22px;
+  font-weight: 800;
+  color: var(--c-navy);
+  margin-bottom: 4mm;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.kirish-content {
+  font-size: 11.5px;
+  line-height: 1.55;
+  color: #334155;
+  display: flex;
+  flex-direction: column;
+  gap: 3mm;
+}
+
+.kirish-content strong {
+  color: var(--c-navy-dark);
+  font-weight: 700;
+}
+
+.kirish-list {
+  list-style: none;
+  padding-left: 2mm;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5mm;
+  margin: 1mm 0;
+}
+
+.kirish-list li {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-weight: 500;
+}
+
+.kirish-list li::before {
+  content: "•";
+  color: var(--c-blue);
+  font-weight: bold;
+}
+
+.kirish-signature {
+  align-self: flex-end;
+  font-size: 19px;
+  color: var(--c-navy);
+  margin-top: 1mm;
+}
+
+.callout-box {
+  background: var(--c-card-blue);
+  border: 1px solid var(--c-card-blue-border);
+  border-radius: 8px;
+  padding: 3mm 4mm;
+  font-size: 10.5px;
+  line-height: 1.45;
+  color: #0369a1;
+  margin-top: auto;
+  margin-bottom: 2mm;
+  position: relative;
+  z-index: 2;
+}
+
+.callout-box strong {
+  color: #0284c7;
+}
+
+.kirish-sketch-bg {
+  position: absolute;
+  bottom: 6mm;
+  left: 10mm;
+  width: 130px;
+  opacity: 0.3;
+  z-index: 1;
+  pointer-events: none;
+}
+
+/* ============================================================
+   3. MUNDARIJA (Sahifa 3)
+   ============================================================ */
+.toc-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1.8mm;
+  margin-top: 2mm;
+  flex: 1;
+}
+
+.toc-item {
+  display: flex;
+  align-items: center;
+  font-size: 11px;
+  font-weight: 500;
+  color: #1e293b;
+}
+
+.toc-badge {
+  width: 18px;
+  height: 18px;
+  background: var(--c-navy);
+  color: #ffffff;
+  border-radius: 50%;
+  font-size: 10px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 6px;
+  flex-shrink: 0;
+}
+
+.toc-name {
+  white-space: nowrap;
+}
+
+.toc-leader {
+  flex: 1;
+  border-bottom: 1px dotted #94a3b8;
+  margin: 0 6px 3px;
+}
+
+.toc-page {
+  font-weight: 700;
+  color: #475569;
+}
+
+.toc-extra {
+  margin-top: 2mm;
+  padding-top: 2mm;
+  border-top: 1px solid #e2e8f0;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5mm;
+}
+
+.toc-extra-item {
+  display: flex;
+  align-items: center;
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--c-navy);
+}
+
+.toc-bottom-row {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  margin-top: auto;
+  position: relative;
+  z-index: 2;
+}
+
+.toc-sketch {
+  width: 110px;
+  opacity: 0.35;
+}
+
+.toc-handwritten {
+  font-size: 20px;
+  color: var(--c-navy);
+  transform: rotate(-4deg);
+  margin-bottom: 2mm;
+}
+
+/* ============================================================
+   4. LESSON 1 & LESSON 5 HEADERS & STRUCTURE
+   ============================================================ */
+.lesson-top-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 3.5mm;
+}
+
+.lesson-title-block {
+  display: flex;
+  flex-direction: column;
+  gap: 2mm;
+}
+
+.lesson-badge {
+  background: var(--c-navy);
+  color: #ffffff;
+  font-family: var(--font-heading);
+  font-size: 11px;
+  font-weight: 800;
+  padding: 3px 12px;
+  border-radius: 12px;
+  align-self: flex-start;
+  letter-spacing: 0.3px;
+}
+
+.lesson-title {
+  font-family: var(--font-heading);
+  font-size: 18px;
+  font-weight: 800;
+  color: var(--c-navy-dark);
+}
+
+.lesson-top-img {
+  width: 90px;
+  height: 52px;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 3px 8px rgba(0,0,0,0.12);
+  flex-shrink: 0;
+}
+
+.lesson-top-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.sub-header {
+  font-family: var(--font-heading);
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--c-navy);
+  border-bottom: 1.5px solid var(--c-navy);
+  display: inline-block;
+  padding-bottom: 1px;
+  margin-bottom: 2mm;
+}
+
+/* Vocabulary 2-Column Grid */
+.vocab-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5mm 4mm;
+  font-size: 10.5px;
+  margin-bottom: 3.5mm;
+}
+
+.vocab-row {
+  display: flex;
+  align-items: baseline;
+  gap: 4px;
+}
+
+.vocab-ru {
+  font-weight: 600;
+  color: var(--c-text-main);
+}
+
+.vocab-dash {
+  color: #94a3b8;
+}
+
+.vocab-uz {
+  color: #64748b;
+}
+
+/* Dialog Box */
+.dialog-card {
+  background: var(--c-card-blue);
+  border: 1px solid var(--c-card-blue-border);
+  border-radius: 8px;
+  padding: 3mm 4mm;
+  margin-bottom: 3.5mm;
+}
+
+.dialog-card-title {
+  font-family: var(--font-heading);
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--c-navy);
+  margin-bottom: 2mm;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.dialog-lines {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5mm;
+  font-size: 11px;
+  color: #1e293b;
+}
+
+.dialog-line {
+  line-height: 1.35;
+}
+
+/* Exercise / Mashq */
+.exercise-block {
+  margin-top: 1mm;
+}
+
+.exercise-title {
+  font-family: var(--font-heading);
+  font-size: 11.5px;
+  font-weight: 700;
+  color: var(--c-navy);
+  margin-bottom: 2.5mm;
+}
+
+.exercise-list {
+  display: flex;
+  flex-direction: column;
+  gap: 2mm;
+  font-size: 10.5px;
+}
+
+.exercise-item {
+  display: flex;
+  align-items: baseline;
+  gap: 4px;
+}
+
+.exercise-item .q-uz {
+  color: #334155;
+  font-weight: 500;
+}
+
+.exercise-item .ans-ru {
+  font-weight: 600;
+  color: var(--c-navy);
+}
+
+.write-line {
+  border-bottom: 1px dotted #64748b;
+  flex: 1;
+  min-width: 40px;
+  height: 12px;
+  display: inline-block;
+}
+
+/* ============================================================
+   5. MUHIM IBORALAR & PHOTO
+   ============================================================ */
+.section-header-icon {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 3.5mm;
+}
+
+.icon-circle {
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  background: var(--c-card-blue);
+  border: 1px solid var(--c-card-blue-border);
+  color: var(--c-blue);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 13px;
+}
+
+.phrases-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 10.5px;
+  margin-bottom: 4mm;
+}
+
+.phrases-table tr {
+  border-bottom: 1px solid #f1f5f9;
+}
+
+.phrases-table tr:nth-child(even) {
+  background: #f8fafc;
+}
+
+.phrases-table td {
+  padding: 2.2mm 2.5mm;
+}
+
+.phrases-table .col-ru {
+  font-weight: 600;
+  color: var(--c-text-main);
+  width: 48%;
+}
+
+.phrases-table .col-dash {
+  color: #94a3b8;
+  width: 4%;
+  text-align: center;
+}
+
+.phrases-table .col-uz {
+  color: #475569;
+  width: 48%;
+}
+
+.phrases-bottom-split {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: auto;
+  gap: 10px;
+}
+
+.phrases-quote {
+  font-size: 22px;
+  color: var(--c-navy);
+  transform: rotate(-3deg);
+}
+
+.phrases-img {
+  width: 82px;
+  height: 82px;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  flex-shrink: 0;
+}
+
+.phrases-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* ============================================================
+   6. GRAMMATIKA (FE'LLAR)
+   ============================================================ */
+.grammar-block {
+  display: flex;
+  flex-direction: column;
+  gap: 3mm;
+}
+
+.grammar-sub {
+  font-size: 11px;
+  color: #334155;
+  line-height: 1.4;
+}
+
+.grammar-table {
+  width: 100%;
+  border-collapse: collapse;
+  border-radius: 6px;
+  overflow: hidden;
+  font-size: 10px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+}
+
+.grammar-table th {
+  background: var(--c-card-blue);
+  color: var(--c-navy);
+  font-family: var(--font-heading);
+  font-weight: 700;
+  padding: 2.2mm 1.5mm;
+  border: 1px solid var(--c-card-blue-border);
+  text-align: center;
+}
+
+.grammar-table td {
+  padding: 2.2mm 1.5mm;
+  border: 1px solid #e2e8f0;
+  text-align: center;
+}
+
+.grammar-table tr:nth-child(even) td {
+  background: #f8fafc;
+}
+
+.grammar-table td:first-child {
+  font-weight: 600;
+  text-align: left;
+  padding-left: 2mm;
+  color: var(--c-navy);
+}
+
+.grammar-shaxs-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1.2mm;
+  font-size: 10.5px;
+  padding-left: 1mm;
+}
+
+.note-yellow {
+  background: var(--c-card-yellow);
+  border: 1px solid var(--c-card-yellow-border);
+  border-radius: 6px;
+  padding: 2.5mm 3.5mm;
+  font-size: 10px;
+  line-height: 1.4;
+  color: var(--c-card-yellow-text);
+  margin-top: 1mm;
+}
+
+.note-yellow strong {
+  color: #713f12;
+}
+
+/* ============================================================
+   7. SUHBAT UCHUN MAVZU
+   ============================================================ */
+.suhbat-container {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.suhbat-questions {
+  display: flex;
+  flex-direction: column;
+  gap: 2mm;
+  font-size: 11.5px;
+  font-weight: 600;
+  color: var(--c-navy-dark);
+  margin: 3mm 0 4mm;
+}
+
+.suhbat-split {
+  flex: 1;
+  position: relative;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 14px rgba(0,0,0,0.12);
+  margin-top: 2mm;
+}
+
+.suhbat-split img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.suhbat-quote-floating {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  right: 12px;
+  background: rgba(255, 255, 255, 0.88);
+  backdrop-filter: blur(4px);
+  padding: 8px 14px;
+  border-radius: 8px;
+  font-size: 20px;
+  line-height: 1.2;
+  color: var(--c-navy);
+  text-align: center;
+  transform: rotate(-1deg);
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+/* ============================================================
+   8. MOTIVATSION SAHIFA (Qizil maydon & kitoblar)
+   ============================================================ */
+.motiv-card {
+  background: linear-gradient(135deg, #e0f2fe 0%, #bae6fd 100%);
+  border-radius: 12px;
+  padding: 6mm 6mm;
+  text-align: center;
+  margin-bottom: 4mm;
+  box-shadow: 0 4px 12px rgba(3, 105, 161, 0.08);
+}
+
+.motiv-card h2 {
+  font-size: 26px;
+  color: var(--c-navy);
+  margin-bottom: 2mm;
+}
+
+.motiv-card p {
+  font-size: 22px;
+  color: var(--c-blue);
+}
+
+.motiv-img-box {
+  flex: 1;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.15);
+}
+
+.motiv-img-box img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* ============================================================
+   9. XULOSA VA OMAD TILASH (Lola guldastasi)
+   ============================================================ */
+.xulosa-page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  text-align: center;
+  padding: 16mm 14mm 12mm;
+}
+
+.xulosa-text-top {
+  font-size: 12px;
+  line-height: 1.55;
+  color: #334155;
+  max-width: 90%;
+  margin-bottom: 3mm;
+}
+
+.xulosa-hand-title {
+  font-size: 28px;
+  color: var(--c-navy);
+  margin-bottom: 1mm;
+}
+
+.xulosa-signature {
+  font-size: 22px;
+  color: var(--c-navy-dark);
+  margin-bottom: 4mm;
+}
+
+.xulosa-tulips {
+  width: 140px;
+  height: 140px;
+  border-radius: 14px;
+  overflow: hidden;
+  box-shadow: 0 6px 16px rgba(0,0,0,0.12);
+  margin: 1mm auto 4mm;
+}
+
+.xulosa-tulips img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.xulosa-pills {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  background: var(--c-card-blue);
+  border: 1px solid var(--c-card-blue-border);
+  border-radius: 20px;
+  padding: 6px 18px;
+  font-family: var(--font-heading);
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--c-navy);
+  letter-spacing: 0.5px;
+}
+
+.xulosa-pills span {
+  position: relative;
+}
+
+.xulosa-pills span:not(:last-child)::after {
+  content: "|";
+  margin-left: 10px;
+  color: #94a3b8;
+}
+
+/* ============================================================
+   10. ORQA MUQOVA (Back Cover)
+   ============================================================ */
+.back-cover-page {
+  padding: 12mm 14mm 10mm;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.back-cover-top {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  text-align: right;
+}
+
+.back-slogan {
+  font-size: 24px;
+  color: var(--c-navy);
+  transform: rotate(1deg);
+  margin-bottom: 2mm;
+}
+
+.back-author {
+  font-family: var(--font-heading);
+  font-size: 12px;
+  font-weight: 800;
+  color: var(--c-navy-dark);
+  letter-spacing: 1.5px;
+}
+
+.back-author-photo {
+  width: 100%;
+  height: 52%;
+  border-radius: 14px;
+  overflow: hidden;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.14);
+  margin: 2mm 0;
+}
+
+.back-author-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top center;
+}
+
+.back-cover-bottom {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  margin-top: auto;
+}
+
+.barcode-box {
+  background: #ffffff;
+  padding: 4px;
+  border-radius: 4px;
+}
+
+.barcode-box img {
+  width: 120px;
+  height: auto;
+  display: block;
+}
+
+/* ============================================================
+   PRINT MEDIA QUERY (@media print)
+   ============================================================ */
+@media print {
+  body {
+    background: transparent !important;
+    padding: 0 !important;
+  }
+  
+  .controls-bar {
+    display: none !important;
+  }
+  
+  .booklet-stage {
+    padding: 0 !important;
+    gap: 0 !important;
+  }
+  
+  .spread-wrapper {
+    box-shadow: none !important;
+    display: block !important;
+    background: transparent !important;
+    page-break-after: always;
+    break-after: page;
+  }
+  
+  .page {
+    box-shadow: none !important;
+    border: none !important;
+    page-break-after: always;
+    break-after: page;
+    width: 148mm !important;
+    height: 210mm !important;
+  }
+  
+  .spreads-mode .left-page::after,
+  .spreads-mode .right-page::before {
+    display: none !important;
+  }
+  
+  @page {
+    size: 148mm 210mm;
+    margin: 0;
+  }
+}

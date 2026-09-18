@@ -1,2 +1,17 @@
+# Ish jarayonidagi vaqtinchalik fayllar
 scratch/
 .print-build.html
+.check-build.html
+__pycache__/
+*.pyc
+
+# kitob-1 ning eski nusxalari (kitob-4 asosiy ish)
+main/
+shamsiyev/
+
+# Kitobga aloqasi yo'q
+ubuntu_installer/
+ubuntu_installer.tar.gz
+
+# alboms sayti rasmlari — kitob-1 papkasiga adashib tushgan, kitobga aloqasi yo'q
+fayoza-kitobi/kitob-1-design/alboms-front/

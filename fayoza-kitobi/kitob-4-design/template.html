@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Fayoza · Рус тили — kurs kitobi</title>
+<link rel="stylesheet" href="styles/fonts.css">
+<link rel="stylesheet" href="styles/noto.css">
+<link rel="stylesheet" href="styles/booklet.css">
+</head>
+<body>
+
+<div class="controls-bar">
+  <span class="brand-badge">Fayoza · Рус тили</span>
+  <span id="fmtLabel">A4 · 00 sahifa</span>
+  <span class="spacer"></span>
+  <select id="pageSelect" class="page-select">
+  </select>
+  <button class="control-btn" id="modeBtn">Yakka sahifa</button>
+  <button class="control-btn primary" onclick="window.print()">Chop etish / PDF</button>
+</div>
+
+<div class="booklet-stage spreads-mode" id="stage">
+
+  <!-- ==========================================================
+       PAGE 1: MUQOVA
+       ========================================================== -->
+  <div class="spread-wrapper">
+    <section class="page cover-page right-page" id="page-1">
+
+      <div class="cover-rule-field"></div>
+
+      <div class="cover-head">
+        <div class="cover-mark">
+          <svg class="cover-mark-glyph" viewBox="0 0 40 40">
+            <polygon points="0,10 12,0 20,8 8,18" fill="#e03538"/>
+            <polygon points="20,8 28,0 40,10 32,18" fill="#ca282c"/>
+            <polygon points="8,18 20,8 32,18 20,30" fill="#e03538"/>
+          </svg>
+          <div>
+            <div class="cover-mark-name">Fayoza</div>
+            <div class="cover-mark-sub">рус тили</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="cover-level-row">
+        <span class="level-pill">A1 · Boshlang‘ich</span>
+        <span class="level-pill">8 modul</span>
+        <span class="level-pill">50 dars</span>
+      </div>
+
+      <div class="cover-band">
+        <div class="cover-eyebrow">Kurs kitobi</div>
+        <h1 class="cover-title">РУС<br>ТИЛИ</h1>
+        <div class="cover-claim">Я МОГУ ГОВОРИТЬ ПО-РУССКИ!</div>
+        <p class="cover-quote">«Rus tilini o‘rganishdagi eng katta maqsad — qoidalarni yodlash
+        emas, ularni hayotda qo‘llay olishdir.»</p>
+      </div>
+
+      <div class="cover-meta">
+        <div class="cover-meta-item">
+          <span class="cover-meta-dot"></span>
+          <span class="cover-meta-text">+998 90 909 09 90<br>+998 90 909 09 90</span>
+        </div>
+        <div class="cover-meta-item">
+          <span class="cover-meta-dot"></span>
+          <span class="cover-meta-text">fayoza@gmail.com<br>www.fayoza.uz</span>
+        </div>
+        <div class="cover-meta-item">
+          <span class="cover-meta-dot"></span>
+          <span class="cover-meta-text">Chilonzor metro ro‘parasidagi<br>Bright School o‘quv markazi</span>
+        </div>
+      </div>
+
+    </section>
+
+    <!-- ==========================================================
+         PAGE 2: REJA (1–4-MODUL)
+         ========================================================== -->
+    <section class="page left-page" id="page-2">
+
+      <h2 class="toc-head">Reja</h2>
+      <div class="toc-sub">СОДЕРЖАНИЕ · 8 modul, 50 dars — boshlang‘ich darajadan erkin suhbatgacha</div>
+
+      <div class="toc-module">
+        <span class="toc-module-n">01</span>
+        <span class="toc-module-name">Boshlang‘ich rus tili</span>
+        <span class="toc-module-note">1–7-dars</span>
+      </div>
+      <div class="toc-row"><span class="toc-row-n">1.</span><span class="toc-row-ru">Я и русский язык</span> <span class="toc-row-uz">o‘zingiz haqingizda</span></div>
+      <div class="toc-row"><span class="toc-row-n">2.</span><span class="toc-row-ru">Знакомство</span> <span class="toc-row-uz">tanishish</span></div>
+      <div class="toc-row pending"><span class="toc-row-n">3.</span><span class="toc-row-ru">Моя семья</span> <span class="toc-row-uz">oila haqida</span></div>
+      <div class="toc-row pending"><span class="toc-row-n">4.</span><span class="toc-row-ru">Мой дом</span> <span class="toc-row-uz">uy va xonalar</span></div>
+      <div class="toc-row pending"><span class="toc-row-n">5.</span><span class="toc-row-ru">Мой день</span> <span class="toc-row-uz">kun tartibi</span></div>
+      <div class="toc-row pending"><span class="toc-row-n">6.</span><span class="toc-row-ru">Числа и цифры</span> <span class="toc-row-uz">sonlar</span></div>
+      <div class="toc-row pending"><span class="toc-row-n">7.</span><span class="toc-row-ru">Сколько это стоит?</span> <span class="toc-row-uz">narx va pul</span></div>
+
+      <div class="toc-module">
+        <span class="toc-module-n">02</span>
+        <span class="toc-module-name">Rus tilining asoslari</span>
+        <span class="toc-module-note">8–14-dars</span>
+      </div>
+      <div class="toc-row pending"><span class="toc-row-n">8.</span><span class="toc-row-ru">Кто? Что?</span> <span class="toc-row-uz">otlar</span></div>
+      <div class="toc-row pending"><span class="toc-row-n">9.</span><span class="toc-row-ru">Мужской, женский, средний род</span> <span class="toc-row-uz">rodlar</span></div>
+      <div class="toc-row pending"><span class="toc-row-n">10.</span><span class="toc-row-ru">Множественное число</span> <span class="toc-row-uz">ko‘plik</span></div>
+      <div class="toc-row pending"><span class="toc-row-n">11.</span><span class="toc-row-ru">Мой, моя, моё, мои</span> <span class="toc-row-uz">egalik olmoshlari</span></div>
+      <div class="toc-row pending"><span class="toc-row-n">12.</span><span class="toc-row-ru">Этот, эта, это, эти</span> <span class="toc-row-uz">ko‘rsatish olmoshlari</span></div>
+      <div class="toc-row pending"><span class="toc-row-n">13.</span><span class="toc-row-ru">Прилагательные</span> <span class="toc-row-uz">sifatlar</span></div>
+      <div class="toc-row pending"><span class="toc-row-n">14.</span><span class="toc-row-ru">Повторение</span> <span class="toc-row-uz">takrorlash</span></div>
+
+      <div class="toc-module">
+        <span class="toc-module-n">03</span>
+        <span class="toc-module-name">Fe’llar va zamonlar</span>
+        <span class="toc-module-note">15–21-dars</span>
+      </div>
+      <div class="toc-row pending"><span class="toc-row-n">15.</span><span class="toc-row-ru">Что ты делаешь?</span> <span class="toc-row-uz">hozirgi zamon</span></div>
+      <div class="toc-row pending"><span class="toc-row-n">16.</span><span class="toc-row-ru">Что ты делал?</span> <span class="toc-row-uz">o‘tgan zamon</span></div>
+      <div class="toc-row pending"><span class="toc-row-n">17.</span><span class="toc-row-ru">Что ты будешь делать?</span> <span class="toc-row-uz">kelasi zamon</span></div>
+      <div class="toc-row pending"><span class="toc-row-n">18.</span><span class="toc-row-ru">Мой обычный день</span> <span class="toc-row-uz">amaliy mashqlar</span></div>
+      <div class="toc-row pending"><span class="toc-row-n">19.</span><span class="toc-row-ru">Могу, хочу, должен</span> <span class="toc-row-uz">modal fe’llar</span></div>
+      <div class="toc-row pending"><span class="toc-row-n">20.</span><span class="toc-row-ru">Идти, ходить, ехать, ездить</span> <span class="toc-row-uz">harakat fe’llari</span></div>
+      <div class="toc-row pending"><span class="toc-row-n">21.</span><span class="toc-row-ru">Повторение</span> <span class="toc-row-uz">takrorlash</span></div>
+
+      <div class="page-number">02</div>
+
+      <svg class="bottom-facet" viewBox="0 0 340 80" preserveAspectRatio="none">
+        <polygon points="0,80 180,80 340,25 0,80" fill="#eaebee"/>
+        <polygon points="120,80 340,80 340,0" fill="#e03538"/>
+        <polygon points="120,80 230,80 340,0" fill="#ca282c"/>
+      </svg>
+
+    </section>
+  </div>
+
+  <!-- ==========================================================
+       PAGE 3 & PAGE 4
+       ========================================================== -->
+  <div class="spread-wrapper">
+    <section class="page right-page" id="page-3">
+
+      <div class="running-head">Reja · содержание</div>
+
+      <div class="toc-module" style="margin-top:0;">
+        <span class="toc-module-n">04</span>
+        <span class="toc-module-name">Kelishiklar — падежи</span>
+        <span class="toc-module-note">22–28-dars</span>
+      </div>
+      <div class="toc-row pending"><span class="toc-row-n">22.</span><span class="toc-row-ru">О чём ты думаешь?</span> <span class="toc-row-uz">предложный падеж</span></div>
+      <div class="toc-row pending"><span class="toc-row-n">23.</span><span class="toc-row-ru">Я люблю…</span> <span class="toc-row-uz">винительный падеж</span></div>
+      <div class="toc-row pending"><span class="toc-row-n">24.</span><span class="toc-row-ru">У меня есть / нет</span> <span class="toc-row-uz">родительный падеж</span></div>
+      <div class="toc-row pending"><span class="toc-row-n">25.</span><span class="toc-row-ru">Мне нужно / нравится</span> <span class="toc-row-uz">дательный падеж</span></div>
+      <div class="toc-row pending"><span class="toc-row-n">26.</span><span class="toc-row-ru">Кем? Чем?</span> <span class="toc-row-uz">творительный падеж</span></div>
+      <div class="toc-row pending"><span class="toc-row-n">27.</span><span class="toc-row-ru">Все падежи</span> <span class="toc-row-uz">oson yodlash usuli</span></div>
+      <div class="toc-row pending"><span class="toc-row-n">28.</span><span class="toc-row-ru">Повторение</span> <span class="toc-row-uz">takrorlash</span></div>
+
+      <div class="toc-module">
+        <span class="toc-module-n">05</span>
+        <span class="toc-module-name">Kundalik suhbatlar</span>
+        <span class="toc-module-note">29–34-dars</span>
+      </div>
+      <div class="toc-row pending"><span class="toc-row-n">29.</span><span class="toc-row-ru">В магазине</span> <span class="toc-row-uz">do‘konda</span></div>
+      <div class="toc-row pending"><span class="toc-row-n">30.</span><span class="toc-row-ru">В кафе и ресторане</span> <span class="toc-row-uz">kafe va restoranda</span></div>
+      <div class="toc-row pending"><span class="toc-row-n">31.</span><span class="toc-row-ru">На работе</span> <span class="toc-row-uz">ish joyida</span></div>
+      <div class="toc-row pending"><span class="toc-row-n">32.</span><span class="toc-row-ru">В школе / университете</span> <span class="toc-row-uz">o‘qishda</span></div>
+      <div class="toc-row pending"><span class="toc-row-n">33.</span><span class="toc-row-ru">По телефону</span> <span class="toc-row-uz">telefonda suhbat</span></div>
+      <div class="toc-row pending"><span class="toc-row-n">34.</span><span class="toc-row-ru">Повторение</span> <span class="toc-row-uz">takrorlash</span></div>
+
+      <div class="toc-module">
+        <span class="toc-module-n">06</span>
+        <span class="toc-module-name">Rus tilida erkin gapiramiz</span>
+        <span class="toc-module-note">35–40-dars</span>
+      </div>
+      <div class="toc-row pending"><span class="toc-row-n">35.</span><span class="toc-row-ru">Как рассказать о себе?</span> <span class="toc-row-uz">o‘zingiz haqingizda</span></div>
+      <div class="toc-row pending"><span class="toc-row-n">36.</span><span class="toc-row-ru">Как рассказать о своей семье?</span> <span class="toc-row-uz">oila</span></div>
+      <div class="toc-row pending"><span class="toc-row-n">37.</span><span class="toc-row-ru">Как рассказать о своём дне?</span> <span class="toc-row-uz">kun haqida</span></div>
+      <div class="toc-row pending"><span class="toc-row-n">38.</span><span class="toc-row-ru">Как выразить своё мнение?</span> <span class="toc-row-uz">fikr bildirish</span></div>
+      <div class="toc-row pending"><span class="toc-row-n">39.</span><span class="toc-row-ru">Как задавать вопросы?</span> <span class="toc-row-uz">savollar</span></div>
+      <div class="toc-row pending"><span class="toc-row-n">40.</span><span class="toc-row-ru">Как поддержать разговор?</span> <span class="toc-row-uz">suhbatni davom ettirish</span></div>
+
+      <div class="toc-module">
+        <span class="toc-module-n">07</span>
+        <span class="toc-module-name">Eng kerakli ruscha</span>
+        <span class="toc-module-note">41–45-dars</span>
+      </div>
+      <div class="toc-row pending"><span class="toc-row-n">41.</span><span class="toc-row-ru">100 самых нужных глаголов</span> <span class="toc-row-uz">eng kerakli fe’llar</span></div>
+      <div class="toc-row pending"><span class="toc-row-n">42.</span><span class="toc-row-ru">100 самых нужных прилагательных</span> <span class="toc-row-uz">eng kerakli sifatlar</span></div>
+      <div class="toc-row pending"><span class="toc-row-n">43.</span><span class="toc-row-ru">Повседневные выражения</span> <span class="toc-row-uz">kundalik iboralar</span></div>
+      <div class="toc-row pending"><span class="toc-row-n">44.</span><span class="toc-row-ru">Типичные ошибки</span> <span class="toc-row-uz">o‘zbeklar ko‘p qiladigan xatolar</span></div>
+      <div class="toc-row pending"><span class="toc-row-n">45.</span><span class="toc-row-ru">Правильное произношение</span> <span class="toc-row-uz">to‘g‘ri talaffuz</span></div>
+
+      <div class="toc-module">
+        <span class="toc-module-n">08</span>
+        <span class="toc-module-name">Mustahkamlash</span>
+        <span class="toc-module-note">46–50-dars</span>
+      </div>
+      <div class="toc-row pending"><span class="toc-row-n">46.</span><span class="toc-row-ru">Повторение</span> <span class="toc-row-uz">takrorlash</span></div>
+      <div class="toc-row pending"><span class="toc-row-n">47.</span><span class="toc-row-ru">Грамматические упражнения</span> <span class="toc-row-uz">grammatik mashqlar</span></div>
+      <div class="toc-row pending"><span class="toc-row-n">48.</span><span class="toc-row-ru">Проверка словарного запаса</span> <span class="toc-row-uz">so‘z boyligini tekshirish</span></div>
+      <div class="toc-row pending"><span class="toc-row-n">49.</span><span class="toc-row-ru">Диалоги</span> <span class="toc-row-uz">dialoglar</span></div>
+      <div class="toc-row pending"><span class="toc-row-n">50.</span><span class="toc-row-ru">Итоговый тест</span> <span class="toc-row-uz">yakuniy test</span></div>
+
+      <div class="page-number">03</div>
+
+      <svg class="bottom-facet" viewBox="0 0 340 80" preserveAspectRatio="none">
+        <polygon points="0,0 0,80 220,80" fill="#e03538"/>
+        <polygon points="0,0 110,80 220,80" fill="#ca282c"/>
+        <polygon points="0,25 160,80 340,80" fill="#eaebee"/>
+      </svg>
+
+    </section>
+
+    <section class="page left-page" id="page-4">
+
+      <div class="running-head">Muallifdan</div>
+
+      <h2 class="toc-head">Muallifdan</h2>
+      <div class="toc-sub">ОТ АВТОРА</div>
+
+      <p class="lead" style="margin-bottom:5mm;">Assalomu alaykum, aziz o‘quvchi!</p>
+
+      <p class="body-text" style="margin-bottom:3.5mm;">Men rus tilini o‘qitishni boshlaganimda
+      bir narsani payqadim: ko‘p odam qoidalarni biladi, lekin gapira olmaydi. Grammatika
+      daftarda qoladi, hayotda esa til kerak bo‘lganda til qotib qoladi.</p>
+
+      <p class="body-text" style="margin-bottom:3.5mm;">Shuning uchun bu kitob boshqacha
+      tuzilgan. Har bir dars <b>jonli suhbatdan</b> boshlanadi — siz avval odamlar qanday
+      gapirishini ko‘rasiz, keyin nega shunday gapirishini tushunasiz. Qoida suhbatdan keyin
+      keladi, aksincha emas.</p>
+
+      <p class="body-text" style="margin-bottom:3.5mm;">Kitobdagi har bir ruscha so‘zda
+      <b>urg‘u belgisi</b> qo‘yilgan — <span class="ru">спаси́бо</span>, <span class="ru">учи́тель</span>.
+      Bu kichik chiziqcha juda muhim: rus tilida urg‘u noto‘g‘ri tushsa, so‘z butunlay
+      boshqa ma’no beradi. Talaffuz bo‘limlarida esa aynan <b>o‘zbek tilida so‘zlashuvchilar</b>
+      qiynaladigan tovushlarni ajratib ko‘rsatdim.</p>
+
+      <p class="body-text" style="margin-bottom:3.5mm;">Kitobni o‘qish uchun emas,
+      <b>ishlash</b> uchun yozdim. Unda bo‘sh chiziqlar bor — ularga yozing. Xato qilishdan
+      qo‘rqmang: xato qilmagan odam o‘rganmaydi ham.</p>
+
+      <p class="body-text" style="margin-bottom:6mm;">Har kuni 20 daqiqa. Ko‘p emas, lekin
+      har kuni. Uch oydan keyin o‘zingiz ishonmaysiz.</p>
+
+      <div class="advice">
+        <div class="advice-title">BITTA VA’DA</div>
+        <p>Agar shu kitobning har bir darsini oxirigacha, bo‘sh joylarini to‘ldirib
+        bajarsangiz — kurs oxirida rus tilida o‘zingiz haqingizda, oilangiz, ishingiz va
+        rejalaringiz haqida bemalol gapira olasiz. Buni yuzlab o‘quvchim qilgan. Siz ham
+        qila olasiz.</p>
+        <div class="chain">
+          <span class="chip">Har kuni 20 daqiqa</span>
+          <span class="arrow">→</span>
+          <span class="chip">50 dars</span>
+          <span class="arrow">→</span>
+          <span class="chip">Я говорю по-русски!</span>
+        </div>
+      </div>
+
+      <p class="body-text" style="margin-top:5mm;"><b>Fayoza Alisherovna</b><br>
+      <span style="color:#7b8595;font-size:9pt;">rus tili o‘qituvchisi</span></p>
+
+      <div class="page-number">04</div>
+
+      <svg class="bottom-facet" viewBox="0 0 340 80" preserveAspectRatio="none">
+        <polygon points="0,80 180,80 340,25 0,80" fill="#eaebee"/>
+        <polygon points="120,80 340,80 340,0" fill="#e03538"/>
+        <polygon points="120,80 230,80 340,0" fill="#ca282c"/>
+      </svg>
+
+    </section>
+  </div>
+
+  <!-- ==========================================================
+       PAGE 5: KITOBDAN QANDAY FOYDALANISH
+       ========================================================== -->
+  <div class="spread-wrapper">
+    <section class="page right-page" id="page-5">
+
+      <div class="running-head">Kitobdan qanday foydalanish</div>
+
+      <h2 class="toc-head">Kitobdan qanday foydalanish</h2>
+      <div class="toc-sub">КАК РАБОТАТЬ С КНИГОЙ · har bir dars bir xil yo‘l bilan boradi</div>
+
+      <p class="body-text" style="margin-bottom:4mm;">Har bir dars quyidagi bosqichlardan
+      iborat. Tartibni buzmang — u atayin shunday tuzilgan: avval <b>eshitasiz va ko‘rasiz</b>,
+      keyin <b>tushunasiz</b>, oxirida <b>o‘zingiz qo‘llaysiz</b>.</p>
+
+      <div class="sec">
+        <span class="sec-ru">ДИАЛОГ</span>
+        <span class="sec-uz">Suhbat</span>
+        <span class="sec-line"></span>
+      </div>
+      <p class="body-text-sm" style="margin-bottom:4mm;">Darsning boshi. Avval faqat ruschasini
+      o‘qing, tarjimaga qaramang. Tushunmagan joyingiz bo‘lsa ham qo‘rqmang — pastda lug‘at bor.
+      Keyin ovoz chiqarib, rollarga bo‘lib o‘qing.</p>
+
+      <div class="sec">
+        <span class="sec-ru">СЛОВА</span>
+        <span class="sec-uz">Yangi so‘zlar</span>
+        <span class="sec-line"></span>
+      </div>
+      <p class="body-text-sm" style="margin-bottom:4mm;">So‘zlar dialogda uchragan tartibda
+      berilgan. O‘rtadagi ustun — <b>taxminiy talaffuz</b>, o‘zbek harflari bilan. U aniq
+      transkripsiya emas, faqat yordamchi: asosiysi urg‘u qayerga tushishi.</p>
+
+      <div class="sec">
+        <span class="sec-ru">ГРАММАТИКА</span>
+        <span class="sec-uz">Qoida</span>
+        <span class="sec-line"></span>
+      </div>
+      <p class="body-text-sm" style="margin-bottom:4mm;">Ko‘k qutilar. Bu yerda dialogda
+      ko‘rgan narsangiz tushuntiriladi. Qoidani yodlashga urinmang — misollarni yodlang,
+      qoida o‘zi esda qoladi.</p>
+
+      <div class="sec">
+        <span class="sec-ru">ПРОИЗНОШЕНИЕ</span>
+        <span class="sec-uz">Talaffuz</span>
+        <span class="sec-line"></span>
+      </div>
+      <p class="body-text-sm" style="margin-bottom:4mm;">Sariq qutilar. Aynan o‘zbek tilida
+      so‘zlashuvchilar qiynaladigan tovushlar. Bu bo‘limni ovoz chiqarib o‘qish shart.</p>
+
+      <div class="sec">
+        <span class="sec-ru">УПРАЖНЕНИЯ</span>
+        <span class="sec-uz">Mashqlar</span>
+        <span class="sec-line"></span>
+      </div>
+      <p class="body-text-sm" style="margin-bottom:4mm;">Qalam oling. Bo‘sh chiziqlarga
+      <b>kitobning o‘ziga</b> yozing — daftarga emas. Oradan bir oy o‘tib qaytib qarasangiz,
+      o‘z qo‘l yozuvingiz eng yaxshi takrorlash bo‘ladi.</p>
+
+      <div class="sec">
+        <span class="sec-ru">ГОВОРИТЕ!</span>
+        <span class="sec-uz">Gapiring</span>
+        <span class="sec-line"></span>
+      </div>
+      <p class="body-text-sm" style="margin-bottom:4mm;">Juftlikda yoki guruhda bajariladigan
+      topshiriq. Yolg‘iz o‘qiyotgan bo‘lsangiz — ikkala rolni ham o‘zingiz, ovoz chiqarib
+      o‘qing. Uyalmang, bu ishlaydi.</p>
+
+      <div class="sec">
+        <span class="sec-ru">ПРОВЕРЬ СЕБЯ</span>
+        <span class="sec-uz">O‘zingizni tekshiring</span>
+        <span class="sec-line"></span>
+      </div>
+      <p class="body-text-sm" style="margin-bottom:5mm;">Dars oxiridagi ro‘yxat. Hamma
+      katakchaga belgi qo‘ya olsangiz — keyingi darsga o‘ting. Qo‘ya olmasangiz, shu darsni
+      yana bir marta ko‘rib chiqing. Shoshilishning keragi yo‘q.</p>
+
+      <div class="pron">
+        <div class="pron-title">УДАРЕНИЕ · Urg‘u belgisi haqida</div>
+        <p>Kitobdagi har bir ruscha so‘zda urg‘u tushadigan unli ustiga kichik chiziqcha
+        qo‘yilgan: <b>спаси́бо</b>, <b>рабо́таю</b>, <b>Москва́</b>. Haqiqiy ruscha matnlarda
+        bu belgi yozilmaydi — u faqat o‘rganuvchilar uchun. <b>ё</b> harfi esa har doim
+        <b>ё</b> deb yoziladi va u doim urg‘uli, shuning uchun unga chiziqcha qo‘yilmaydi.</p>
+      </div>
+
+      <div class="page-number">05</div>
+
+      <svg class="bottom-facet" viewBox="0 0 340 80" preserveAspectRatio="none">
+        <polygon points="0,0 0,80 220,80" fill="#e03538"/>
+        <polygon points="0,0 110,80 220,80" fill="#ca282c"/>
+        <polygon points="0,25 160,80 340,80" fill="#eaebee"/>
+      </svg>
+
+    </section>
+  </div>
+
+  <!-- LESSONS:START -->
+  <!-- LESSONS:END -->
+
+  <!-- ==========================================================
+       PAGE 00: ORQA MUQOVA
+       ========================================================== -->
+  <div class="spread-wrapper">
+    <section class="page back-cover-page left-page" id="page-00">
+
+      <div class="cover-rule-field"></div>
+
+      <div class="cover-head" style="padding-top:20mm;">
+        <div class="cover-mark">
+          <svg class="cover-mark-glyph" viewBox="0 0 40 40">
+            <polygon points="0,10 12,0 20,8 8,18" fill="#e03538"/>
+            <polygon points="20,8 28,0 40,10 32,18" fill="#ca282c"/>
+            <polygon points="8,18 20,8 32,18 20,30" fill="#e03538"/>
+          </svg>
+          <div>
+            <div class="cover-mark-name">Fayoza</div>
+            <div class="cover-mark-sub">рус тили</div>
+          </div>
+        </div>
+      </div>
+
+      <div style="position:relative;z-index:2;padding:20mm var(--pad-out) 0;">
+        <p class="lead" style="font-size:15pt;line-height:1.45;font-weight:600;margin-bottom:6mm;">
+        Bu kitob o‘qish uchun emas — <span style="color:#e03538;">ishlash</span> uchun.</p>
+
+        <div class="cando" style="margin-bottom:6mm;">
+          <div class="cando-title">KITOB ICHIDA</div>
+          <ul class="cando-list">
+            <li>8 modul, 50 dars — boshlang‘ich darajadan erkin suhbatgacha</li>
+            <li>Har bir ruscha so‘zda urg‘u belgisi va o‘zbekcha talaffuz</li>
+            <li>Jonli dialoglar — kundalik hayotdagi haqiqiy vaziyatlar</li>
+            <li>O‘zbek tilida so‘zlashuvchilar uchun maxsus talaffuz bo‘limlari</li>
+            <li>Har darsda yozish uchun joy va o‘z-o‘zini tekshirish ro‘yxati</li>
+          </ul>
+        </div>
+
+        <p class="body-text" style="margin-bottom:5mm;">Har kuni 20 daqiqa ajrating.
+        Uch oydan keyin rus tilida o‘zingiz haqingizda, oilangiz va ishingiz haqida
+        bemalol gapirasiz.</p>
+      </div>
+
+      <div class="cover-band" style="margin-top:auto;padding:10mm var(--pad-out);">
+        <div class="cover-claim" style="margin-bottom:2mm;">Я МОГУ ГОВОРИТЬ ПО-РУССКИ!</div>
+        <p class="cover-quote" style="max-width:none;">fayoza@gmail.com · www.fayoza.uz ·
+        +998 90 909 09 90 — Chilonzor metro ro‘parasidagi Bright School o‘quv markazi</p>
+      </div>
+
+    </section>
+  </div>
+
+</div>
+
+<script>
+  var stage = document.getElementById('stage');
+  var modeBtn = document.getElementById('modeBtn');
+  var sel = document.getElementById('pageSelect');
+
+  modeBtn.addEventListener('click', function () {
+    var spreads = stage.classList.toggle('spreads-mode');
+    stage.classList.toggle('pages-mode', !spreads);
+    modeBtn.textContent = spreads ? 'Yakka sahifa' : 'Yoyilma';
+  });
+
+  sel.addEventListener('change', function () {
+    var el = document.getElementById(this.value);
+    if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  });
+</script>
+
+</body>
+</html>
